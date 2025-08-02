@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prayag 25 | A National Level Tech Fest</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- SwiperJS CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Part 0: Preloader -->
+    <div id="preloader">
+        <div class="preloader-pattern"></div>
+    </div>
+
+    <!-- Custom Spice Cursor -->
+    <div class="custom-cursor"></div>
+
+    <!-- Part 3: Multi-Layered Parallax Background -->
+    <div class="parallax-bg">
+        <div id="stars-bg"></div>
+        <!-- NEW: Rotating Logo GIF Background -->
+        <div id="rotating-logo-bg"></div> 
+        <div id="particles-js"></div>
+    </div>
+
+    <div id="main-content">
+        <!-- Part 1: Hero Section -->
+        <section id="hero" class="hero-section">
+            <div class="hero-content">
+                <h1 class="main-title">PRAYAG 25</h1>
+                <h2 class="sub-title">A National Level Tech Fest by the Department of Artificial Intelligence & Data Science</h2>
+                <p class="institution">Adi Shankara Institute of Engineering and Technology</p>
+                <div class="key-details">
+                    <span>PRIZES WORTH ₹100K</span>
+                    <span class="separator">|</span>
+                    <span>REG FEE ₹200</span>
+                </div>
+                <a href="#footer" class="cta-button">
+                    <span class="cta-text">REGISTER NOW</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Part 2: Events Section (with links to individual HTML pages) -->
+        <section id="events" class="content-section">
+            <h2 class="section-title">The Events</h2>
+            
+            <div class="swiper event-slider">
+                <div class="swiper-wrapper">
+                    
+                    <!-- Links to idea-pitch.html -->
+                    <a href="idea-pitch.html" class="swiper-slide">
+                        <div class="event-poster" style="background-image: url('event_images/event_3.jpg');">
+                            <div class="poster-glow"></div>
+                            <div class="poster-title">Idea Pitch</div>
+                        </div>
+                    </a>
+        
+                    <!-- Links to code-conquest.html -->
+                    <a href="code-conquest.html" class="swiper-slide">
+                        <div class="event-poster" style="background-image: url('event_images/event_5.jpg');">
+                            <div class="poster-glow"></div>
+                            <div class="poster-title">Code Conquest</div>
+                        </div>
+                    </a>
+        
+                    <!-- Links to cryptic-codex.html -->
+                    <a href="cryptic-codex.html" class="swiper-slide">
+                        <div class="event-poster" style="background-image: url('event_images/event_1.jpg');">
+                            <div class="poster-glow"></div>
+                            <div class="poster-title">Cryptic Codex</div>
+                        </div>
+                    </a>
+        
+                    <!-- Links to virtual-victory.html -->
+                    <a href="virtual-victory.html" class="swiper-slide">
+                        <div class="event-poster" style="background-image: url('event_images/event_2.jpg');">
+                            <div class="poster-glow"></div>
+                            <div class="poster-title">Virtual Victory</div>
+                        </div>
+                    </a>
+        
+                    <!-- Links to da-vinci.html -->
+                    <a href="da-vinci.html" class="swiper-slide">
+                        <div class="event-poster" style="background-image: url('event_images/event_4.jpg');">
+                            <div class="poster-glow"></div>
+                            <div class="poster-title">Da Vinci</div>
+                        </div>
+                    </a>
+                </div>
+                
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
+        
+                <!-- Add Navigation -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </section>
+
+        <!-- Part 4: Sponsors Section -->
+        <section id="sponsors" class="content-section">
+            <h2 class="section-title">Our Honored Allies</h2>
+            <div class="sponsors-grid">
+                <!-- Replace with actual sponsor logos -->
+                <img src="https://via.placeholder.com/200x100/FFFFFF/000000?text=Matrixx" alt="Matrixx Overseas" class="sponsor-logo">
+                <img src="https://via.placeholder.com/200x100/FFFFFF/000000?text=Osaka" alt="Osaka Educare" class="sponsor-logo">
+                <img src="https://via.placeholder.com/200x100/FFFFFF/000000?text=AECC" alt="AECC" class="sponsor-logo">
+            </div>
+        </section>
+
+        <!-- Part 5: Footer & Contact Section -->
+        <footer id="footer" class="content-section footer-section">
+            <h2 class="section-title">The Council</h2>
+            <div class="footer-content">
+                <div class="contact-info">
+                    <h3>Conveners & Coordinators</h3>
+                    <p><strong>Convener:</strong> Dr. S.S. Sreeja</p>
+                    <p><strong>Staff Coordinator:</strong> Prof. Sangeetha J.</p>
+                    <p><strong>Student Coordinator:</strong> Abhinav Krishna - 9876543210</p>
+                    <p><strong>Student Coordinator:</strong> Anjana Suresh - 8765432109</p>
+                </div>
+                <div class="social-links">
+                    <h3>Connect With Us</h3>
+                    <a href="https://www.instagram.com/prayag_25/" target="_blank">Instagram</a>
+                    <a href="mailto:prayag25@adishankara.ac.in">Email</a>
+                </div>
+                <div class="qr-code-container">
+                    <h3>Register Now</h3>
+                    <!-- Replace with your actual registration link for the QR code -->
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://adishankara.ac.in" alt="Registration QR Code" class="qr-code">
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    
+    <!-- Main Script File -->
+    <script src="script.js"></script>
+
+</body>
+</html>
