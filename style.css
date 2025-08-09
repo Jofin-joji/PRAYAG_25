@@ -3,7 +3,7 @@
 --spice-gold: #FFC300; /* Brighter Yellow */
 --spice-orange: #FF5733; /* Vibrant Orange */
 --spice-gold-glow: rgba(255, 195, 0, 0.6);
---dune-sand: #F0E68C; /* Lighter Sand for better contrast */
+--dune-sand: #F0E68C; 
 --font-heading: 'Orbitron', sans-serif;
 --font-body: 'Inter', sans-serif;
 }
