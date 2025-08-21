@@ -1,0 +1,138 @@
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600&display=swap');
+
+/* General Body Styles */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Rajdhani', Arial, sans-serif;
+    background-color: #1a1a1a;
+    color: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Wrapper for main page content */
+.main-content-wrapper {
+    flex-grow: 1;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #0d0d0d;
+    color: #f0f0f0;
+    padding: 20px;
+    text-align: center;
+    border-top: 1px solid #333;
+    flex-shrink: 0;
+}
+
+/* Sponsor Section */
+.sponsor-section {
+    padding: 40px 0;
+    background-color: #111;
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
+    flex-shrink: 0;
+}
+
+.sponsor-title {
+    text-align: center;
+    font-size: 3em;
+    margin-bottom: 40px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    /* Golden Gradient */
+    background: linear-gradient(to right, #FFD700, #FFA500, #FF8C00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+
+    /* Glow */
+    text-shadow: 0 0 8px rgba(255, 215, 0, 0.4),
+                 0 0 15px rgba(255, 165, 0, 0.2);
+}
+
+.sponsor-carousel-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.sponsor-carousel-track {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    transform: translateX(0);
+    will-change: transform; /* Smooth animation hint */
+}
+
+.sponsor-logo-wrapper {
+    display: inline-block;
+    margin: 0 40px;
+    flex-shrink: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    filter: brightness(0.9);
+}
+
+.sponsor-logo-wrapper:hover {
+    transform: translateY(-8px) scale(1.1);
+    opacity: 1;
+    filter: brightness(1);
+}
+
+.sponsor-logo-wrapper img {
+    height: 60px;
+    width: auto;
+    max-width: 180px;
+    object-fit: contain;
+    display: block;
+}
+
+/* Responsive Tweaks */
+@media (max-width: 1024px) {
+    .sponsor-title {
+        font-size: 2.5em;
+    }
+    .sponsor-logo-wrapper {
+        margin: 0 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .sponsor-title {
+        font-size: 2em;
+        margin-bottom: 30px;
+        letter-spacing: 1px;
+    }
+    .sponsor-logo-wrapper {
+        margin: 0 20px;
+    }
+    .sponsor-logo-wrapper img {
+        height: 50px;
+    }
+}
+
+@media (max-width: 480px) {
+    .sponsor-title {
+        font-size: 1.7em;
+        margin-bottom: 20px;
+    }
+    .sponsor-logo-wrapper {
+        margin: 0 15px;
+    }
+    .sponsor-logo-wrapper img {
+        height: 40px;
+    }
+}
