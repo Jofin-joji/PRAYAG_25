@@ -3,51 +3,174 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Virtual Victory | Prayag 25</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <title>Virtual Victory | Prayag</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="static/style/event_pg.css">
+    <link rel="icon" type="image/png" href="images/dune1.png">
 </head>
 <body>
-    <div class="parallax-bg">
-        <div id="stars-bg"></div>
-        <div id="particles-js"></div>
-    </div>
-    <div class="custom-cursor"></div>
+    <video autoplay loop muted id="video-background"><source src="public/virtual.mp4" type="video/mp4"></video>
+    <!-- Custom Cursor -->
+    <div class="custom-cursor" id="customCursor"></div>
 
-    <div id="event-detail-page">
-        <header class="detail-header"><h1>Virtual Victory</h1></header>
-        <div class="detail-grid">
-            <main class="detail-main-content">
-                <section class="detail-section">
-                    <h2>Mission Briefing</h2>
-                    <p>A competitive e-sports event where participants showcase their gaming skills in a virtual battleground. This year's featured game is Valorant. Form your squad and fight for glory.</p>
-                </section>
-                <section class="detail-section">
-                    <h2>Rules of Engagement</h2>
-                    <ul>
-                        <li>Game: Valorant.</li>
-                        <li>Team size: 5 members.</li>
-                        <li>Format: Single Elimination Bracket.</li>
-                        <li>All players must have their own game accounts.</li>
-                    </ul>
-                </section>
-            </main>
-            <aside class="detail-sidebar">
-                <div class="status-panel">
-                    <h3>SYSTEM STATUS</h3>
-                    <div class="status-item"><span class="label">Prize Pool</span><span class="value">₹25,000</span></div>
-                    <div class="status-item"><span class="label">Field Contact</span><span class="value">Sojose - 8800692526</span></div>
-                    <div class="status-item"><span class="label">Timeline</span><span class="value">Oct 16, 2025 | 09:00 AM</span></div>
-                    <div class="status-item registration-status"><span class="label">Registration</span><span class="value">OPEN</span></div>
-                </div>
-                <a href="index.html#footer" class="cta-button detail-cta">REGISTER NOW</a>
-            </aside>
-        </div>
-        <footer class="detail-footer"><a href="index.html#events" class="back-link">← Return to Trials</a></footer>
+    <!-- Background Elements -->
+    <div class="background-container">
+        <div class="gradient-bg"></div>
+        <div class="particles-container" id="particlesContainer"></div>
+        <div class="rotating-bg"></div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-    <script src="event-detail-animations.js"></script>
+
+    <!-- Main Content Container -->
+    <div class="main-container">
+        
+        <!-- Header -->
+        <header class="header">
+            <div class="header-line"></div>
+            <h1 class="main-title">
+                <span class="title-word">VIRTUAL VICTORY</span>
+            </h1>
+            <!-- <h1 class="main-title">
+                <span class="title-word title-delayed">VICTORY</span>
+            </h1> -->
+            <div class="header-line-bottom"></div>
+        </header>
+
+        <!-- Main Grid Layout -->
+        <div class="content-grid">
+            
+            <!-- Main Content - Left Side -->
+            <div class="main-content">
+                
+                <!-- Mission Briefing Section -->
+                <section class="content-section mission-section">
+                    <div class="section-header">
+                        <div class="section-icon">🎯</div>
+                        <h2 class="section-title">MISSION BRIEFING</h2>
+                    </div>
+                    
+                    <div class="section-content">
+                        <p>A competitive e-sports event where participants showcase their gaming skills in a virtual battleground. This year's featured game is <span class="highlight">Valorant</span>.</p>
+                        <p>Form your squad and fight for glory in the ultimate test of skill, strategy, and teamwork.</p>
+                    </div>
+                </section>
+
+                <!-- Rules of Engagement Section -->
+                <section class="content-section rules-section">
+                    <div class="section-header">
+                        <div class="section-icon">🛡️</div>
+                        <h2 class="section-title">RULES OF ENGAGEMENT</h2>
+                    </div>
+                    
+                    <div class="rules-grid">
+                        <div class="rule-item">
+                            <div class="rule-icon">🎮</div>
+                            <div class="rule-content">
+                                <div class="rule-label">Game</div>
+                                <div class="rule-value">Valorant</div>
+                            </div>
+                        </div>
+                        <div class="rule-item">
+                            <div class="rule-icon">👥</div>
+                            <div class="rule-content">
+                                <div class="rule-label">Team Size</div>
+                                <div class="rule-value">5 members</div>
+                            </div>
+                        </div>
+                        <div class="rule-item">
+                            <div class="rule-icon">🏆</div>
+                            <div class="rule-content">
+                                <div class="rule-label">Format</div>
+                                <div class="rule-value">Single Elimination Bracket</div>
+                            </div>
+                        </div>
+                        <div class="rule-item">
+                            <div class="rule-icon">⭐</div>
+                            <div class="rule-content">
+                                <div class="rule-label">Requirement</div>
+                                <div class="rule-value">Own game accounts</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Sidebar - System Status -->
+            <div class="sidebar">
+                <div class="status-panel">
+                    
+                    <!-- System Status Header -->
+                    <div class="status-header">
+                        <h3 class="status-title">SYSTEM STATUS</h3>
+                        <div class="status-line"></div>
+                    </div>
+
+                    <!-- Status Items -->
+                    <div class="status-items">
+                        
+                        <!-- Prize Pool -->
+                        <div class="status-item prize-pool">
+                            <div class="status-icon">🏆</div>
+                            <div class="status-content">
+                                <div class="status-label">Prize Pool</div>
+                                <div class="status-value">₹25,000</div>
+                            </div>
+                        </div>
+
+                        <!-- Field Contact -->
+                        <div class="status-item">
+                            <div class="status-icon">📞</div>
+                            <div class="status-content">
+                                <div class="status-label">Field Contact</div>
+                                <div class="status-value">Vaishnav</div>
+                                <div class="status-sub">8075012965</div>
+                            </div>
+                        </div>
+
+                        <!-- Timeline -->
+                        <div class="status-item">
+                            <div class="status-icon">📅</div>
+                            <div class="status-content">
+                                <div class="status-label">Timeline</div>
+                                <div class="status-value">Oct 16, 2025</div>
+                                <div class="status-sub">09:00 AM</div>
+                            </div>
+                        </div>
+
+                        <!-- Registration Status -->
+                        <div class="status-item registration-status">
+                            <div class="status-icon pulse">🟢</div>
+                            <div class="status-content">
+                                <div class="status-label">Registration</div>
+                                <div class="status-value open">OPEN</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Register Button -->
+                    <a href="https://forms.gle/LotEX87YzLYGkfhT8" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    class="register-btn" id="registerBtn">
+                        <span class="btn-icon">⚡</span>
+                        <span class="btn-text">REGISTER NOW</span>
+                        <span class="btn-icon">⚡</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <a href="event_slider_pg.html" class="back-link">
+                    <span class="back-arrow">←</span>
+                    Return to Trials
+                </a>
+            </div>
+            <p class="footer-text">© 2025 Virtual Victory. The spice must flow. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="static/script/event_pg.js"></script>
 </body>
 </html>

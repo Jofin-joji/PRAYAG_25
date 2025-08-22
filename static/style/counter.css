@@ -1,0 +1,158 @@
+/* ===== Reset ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #1a1611;
+    color: #d4af37;
+    overflow: auto;
+    height: 100vh;
+}
+
+/* ===== Main Layout ===== */
+.counter-layout {
+    font-family: 'Courier New', monospace;
+    position: fixed;
+    display: flex;
+    align-items: center;        /* vertical center */
+    justify-content: flex-start; /* stick to left */
+    gap: 1.5rem;                  /* space between counter and date */
+    height: 100vh;              /* take full height */
+    z-index: 9999;
+    padding-left: 1.5rem;         /* space from left edge */
+}
+
+/* ===== Countdown Column ===== */
+.vertical-counter {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;                  /* space between each unit */
+}
+
+/* Each unit (Days / Hours / Minutes / Seconds) */
+.vertical-counter .time-unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem; /* label spacing from flip container */
+}
+
+.vertical-counter .flip-container {
+    perspective: 1000px;
+    width: 80px;
+    height: 70px;
+}
+
+.vertical-counter .label {
+    font-size: 0.9rem;
+    color: #8b6914;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* ===== Flip Animation ===== */
+.flip-card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease-in-out;
+}
+
+.flip-container.flipping .flip-card {
+    transform: rotateX(-180deg);
+}
+
+.flip-card-top,
+.flip-card-bottom {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(145deg, #2a2318, #1f1c14);
+    border: 2px solid #8b6914;
+    border-radius: 8px;
+    backface-visibility: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(212, 175, 55, 0.2);
+}
+
+.flip-card-bottom {
+    transform: rotateX(180deg);
+    background: linear-gradient(145deg, #1f1c14, #2a2318);
+}
+
+.digit {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #d4af37;
+    text-shadow: 0 0 5px #d4af37, 0 0 10px #b8860b;
+}
+
+/* ===== Vertical Date Column ===== */
+.vertical-date {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.8rem;
+    font-weight: lighter;
+    color: #d4af37;
+    text-shadow: 0 0 5px #d4af37, 0 0 10px #b8860b;
+    letter-spacing: 2px;
+}
+
+.vertical-date .spacer {
+    height: 1.5rem; /* space between month and day */
+}
+
+/* ===== Completion State ===== */
+.countdown-complete .flip-card-top,
+.countdown-complete .flip-card-bottom {
+    border-color: #ff6b35;
+    background: linear-gradient(145deg, #3d1a0f, #2d140b);
+    animation: completePulse 1s ease-in-out infinite;
+}
+
+.countdown-complete .digit {
+    color: #ff6b35;
+    text-shadow: 0 0 10px #ff6b35, 0 0 20px #ff8c42;
+}
+
+@keyframes completePulse {
+    0%, 100% {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3),
+                    inset 0 1px 0 rgba(255, 107, 53, 0.3),
+                    0 0 20px rgba(255, 107, 53, 0.4);
+    }
+    50% {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3),
+                    inset 0 1px 0 rgba(255, 107, 53, 0.5),
+                    0 0 30px rgba(255, 107, 53, 0.6);
+    }
+}
+
+@media (max-width: 850px) {
+    .counter-layout {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .counter-layout {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .counter-layout {
+        display: none;
+    }
+}
+

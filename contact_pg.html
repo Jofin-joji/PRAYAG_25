@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacts | Prayag 25</title>
+    <link rel="icon" type="image/png" href="images/dune1.png">
+    <!-- Google Fonts for Orbitron and Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Link to external CSS file -->
+    <link rel="stylesheet" href="static/style/contact_pg.css">
+    <link rel="stylesheet" href="static/style/nav_style.css">
+</head>
+<body>
+    <!-- Hamburger Menu Button (for Mobile) -->
+    <button class="hamburger-menu" aria-label="Toggle navigation">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </button>
+
+    <!-- NEW: Canvas for particle background -->
+    <canvas id="particlesCanvas"></canvas>
+
+    <div class="contacts-page-container">
+        <h1 class="contacts-heading">CONTACTS</h1>
+        <div class="contact-cards-wrapper">
+            <!-- Card 1: ABHIJITH A K -->
+            <div class="contact-card">
+                <div class="contact-photo-container">
+                    <img src="coordinator_img/abhijith.png" alt="ABHIJITH A K">
+                </div>
+                <div class="contact-details">
+                    <!-- This is the default visible content -->
+                    <div class="contact-primary-info">
+                        <p class="contact-name">ABHIJITH A K</p>
+                        <p class="contact-title">Program Convenor</p>
+                        <div class="contact-icons">
+                            <a href="#" class="icon-btn phone-btn" aria-label="Show phone number" data-info="+91 85906 95431">
+                                <svg viewBox="0 0 24 24"><path d="M20 15.5c-1.25 0-2.54-.23-3.7-.68-.45-.17-.9-.25-1.35-.25-.37 0-.72.08-1.05.25L12 16c-2.48-1.33-4.57-3.42-5.9-5.9L8.43 8.3c.17-.33.25-.68.25-1.05 0-.45-.08-.9-.25-1.35C7.23 4.54 7 3.25 7 2c0-.55-.45-1-1-1H3c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3c0-.55-.45-1-1-1z"/></svg>
+                            </a>
+                            <a href="#" class="icon-btn email-btn" aria-label="Show email address" data-info="2002abihijithak@gmail.com">
+                                <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- This is the hidden panel that will be shown on click -->
+                    <div class="contact-info-display">
+                        <p class="info-text"></p>
+                        <a href="#" class="back-btn">Back</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 2: ABINAND B ARJUN -->
+            <div class="contact-card">
+                <div class="contact-photo-container">
+                    <img src="coordinator_img/abinand.png" alt="ABINAND B ARJUN">
+                </div>
+                <div class="contact-details">
+                    <div class="contact-primary-info">
+                        <p class="contact-name">ABINAND B ARJUN</p>
+                        <p class="contact-title">Program Convenor</p>
+                        <div class="contact-icons">
+                             <a href="#" class="icon-btn phone-btn" aria-label="Show phone number" data-info="+91 83010 66741">
+                                <svg viewBox="0 0 24 24"><path d="M20 15.5c-1.25 0-2.54-.23-3.7-.68-.45-.17-.9-.25-1.35-.25-.37 0-.72.08-1.05.25L12 16c-2.48-1.33-4.57-3.42-5.9-5.9L8.43 8.3c.17-.33.25-.68.25-1.05 0-.45-.08-.9-.25-1.35C7.23 4.54 7 3.25 7 2c0-.55-.45-1-1-1H3c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3c0-.55-.45-1-1-1z"/></svg>
+                            </a>
+                            <a href="#" class="icon-btn email-btn" aria-label="Show email address" data-info="abinandbarjun7@gmail.com">
+                                <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="contact-info-display">
+                        <p class="info-text"></p>
+                        <a href="#" class="back-btn">Back</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 3: Abhishek P -->
+            <div class="contact-card">
+                <div class="contact-photo-container">
+                    <img src="coordinator_img/krishnaja.png" alt="Abhishek P">
+                </div>
+                <div class="contact-details">
+                     <div class="contact-primary-info">
+                        <p class="contact-name">KRISHNAJA</p>
+                        <p class="contact-title">Program Convenor</p>
+                        <div class="contact-icons">
+                             <a href="#" class="icon-btn phone-btn" aria-label="Show phone number" data-info="+91 80759 60827">
+                                <svg viewBox="0 0 24 24"><path d="M20 15.5c-1.25 0-2.54-.23-3.7-.68-.45-.17-.9-.25-1.35-.25-.37 0-.72.08-1.05.25L12 16c-2.48-1.33-4.57-3.42-5.9-5.9L8.43 8.3c.17-.33.25-.68.25-1.05 0-.45-.08-.9-.25-1.35C7.23 4.54 7 3.25 7 2c0-.55-.45-1-1-1H3c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3c0-.55-.45-1-1-1z"/></svg>
+                            </a>
+                            <a href="#" class="icon-btn email-btn" aria-label="Show email address" data-info="krishnajatn20@gmail.com">
+                                <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                     <div class="contact-info-display">
+                        <p class="info-text"></p>
+                        <a href="#" class="back-btn">Back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- Navigation Bar -->
+<nav class="navbar-right">
+    <ul>
+        <!-- Home Icon -->
+        <li class="nav-item" data-tooltip="Home">
+            <a href="landing_pg.html">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 5.69L17 10.19V18H15V12H9V18H7V10.19L12 5.69ZM12 3L2 12H5V20H11V14H13V20H19V12H22L12 3Z"/>
+                </svg>
+            </a>
+        </li>
+        <!-- Events Icon (Building/Museum icon, labeled Events) -->
+        <li class="nav-item" data-tooltip="Events">
+            <a href="event_slider_pg.html">
+                <svg viewBox="0 0 24 24">
+                    <path d="M2 20h20v-2H2v2zm2-4h16V7H4v9zm2-7h3v2H6V9zm4 0h3v2h-3V9zm4 0h3v2h-3V9zm-8 4h12v-6H6v6z"/>
+                </svg>
+            </a>
+        </li>
+        
+        
+        <!-- Calendar Icon -->
+        <li class="nav-item" data-tooltip="Event Schedule">
+            <a href="schedule_pg.html">
+                <svg viewBox="0 0 24 24">
+                    <path d="M19 4h-2V2h-2v2H9V2H7v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11zM7 11h2v2H7v-2zm4 0h2v2h-2v-2zm4 0h2v2h-2v-2zm-8 4h2v2H7v-2zm4 0h2v2h-2v-2zm4 0h2v2h-2v-2z"/>
+                </svg>
+            </a>
+        </li>
+        
+        <!-- Person Icon -->
+        <li class="nav-item" data-tooltip="Gallery">
+            <a href="gallery_pg.html">
+                <svg viewBox="0 0 24 24">
+                    <path d="M2 6v14c0 1.1.9 2 2 2h14v-2H4V6H2zm19-4H7c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 9l-2.5-3.21L14 12.5 11.5 9.5l-3 4H19v-4z"/>
+                </svg>
+
+            </a>
+        </li>
+
+        <!-- Phone Icon -->
+        <li class="nav-item active" data-tooltip="Contact">
+            <a href="contact_pg.html">
+                <svg viewBox="0 0 24 24">
+                    <path d="M20 15.5c-1.25 0-2.54-.23-3.7-.68-.45-.17-.9-.25-1.35-.25-.37 0-.72.08-1.05.25L12 16c-2.48-1.33-4.57-3.42-5.9-5.9L8.43 8.3c.17-.33.25-.68.25-1.05 0-.45-.08-.9-.25-1.35C7.23 4.54 7 3.25 7 2c0-.55-.45-1-1-1H3c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3c0-.55-.45-1-1-1z"/>
+                </svg>
+            </a>
+        </li>
+        
+    </ul>
+</nav>
+
+    <!-- Link to external JavaScript file -->
+    <script src="static/script/contact_pg.js"></script>
+    <script src="static/script/nav-script.js"></script>
+</body>
+</html>

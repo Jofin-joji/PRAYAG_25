@@ -1,0 +1,339 @@
+/* Base Styles (for Desktop First) */
+body {
+    margin: 0;
+    font-family: var(--font-body);
+    background-color: var(--deep-black); 
+    color: var(--desert-sand);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Prevents scrollbars from hidden navbar */
+    padding-right: 180px; /* Space for the fixed right navbar */
+    box-sizing: border-box; 
+    position: relative; 
+}
+
+/* Navigation menu */
+
+
+/* Navbar Container Styling (Desktop) */
+.navbar-right {
+    position: fixed;
+    right: 80px; 
+    top: 50%; 
+    transform: translateY(-50%); 
+    display: flex;
+    flex-direction: column; /* Vertical alignment for desktop */
+    background: var(--space-black); 
+    border-radius: 20px; 
+    padding: 15px 0; 
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.9); 
+    z-index: 1000; 
+    transition: var(--transition-smooth); /* Added for smoother mobile transition */
+}
+
+.navbar-right ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column; /* Vertical alignment for desktop */
+    gap: 20px; 
+}
+
+/* Individual Navbar Item Styling (Desktop & Mobile Base) */
+.navbar-right li {
+    position: relative; 
+    width: 80px; 
+    height: 80px; 
+    border-radius: 15px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    /* Keep this commented out if you want tooltips visible outside the element,
+       but note it will affect the ripple effect. */
+    /* overflow: hidden; */ 
+    
+    background-color: var(--deep-black);
+    border: 3px solid var(--spice-gold); 
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.08); 
+}
+
+.navbar-right li a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: white; 
+
+}
+
+.navbar-right li svg {
+    width: 40px; 
+    height: 40px;
+    fill: white; 
+    transition: fill var(--transition-smooth); 
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5)); 
+}
+
+
+/* Hover & Active States for Navbar Items */
+.navbar-right li:hover,
+.navbar-right li.active {
+    border: none; 
+    background: linear-gradient(to bottom right, #FFA500, #FFD700, #FF8C00); 
+    box-shadow: 0 0 25px var(--glow-amber), 
+                0 0 50px var(--glow-orange); 
+    transform: scale(1.12); 
+}
+
+/* Tooltip (Description on Hover - Desktop Only) */
+.navbar-right li::after {
+    content: attr(data-tooltip); 
+    position: absolute;
+    /* --- CHANGED: Position tooltip to the LEFT --- */
+    right: calc(100% + 20px); /* 20px to the left of the icon */
+    top: 50%;
+    /* Initial state: start 20px further right (off-screen) */
+    transform: translateY(-50%) translateX(20px); 
+    opacity: 0;
+    visibility: hidden;
+    background-color: var(--space-black);
+    color: var(--desert-sand);
+    padding: 10px 15px;
+    border-radius: 8px;
+    white-space: nowrap; 
+    font-size: 0.9em;
+    font-family: var(--font-body);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5), inset 0 0 5px rgba(255, 255, 255, 0.1);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+    z-index: 999; 
+    border: 1px solid var(--spice-gold); 
+}
+
+/* Tooltip Arrow (Desktop Only) */
+.navbar-right li::before {
+    content: '';
+    position: absolute;
+    /* --- CHANGED: Position arrow to the LEFT of the icon --- */
+    right: calc(100% + 15px); /* 15px to the left of the icon, between icon and tooltip */
+    top: 50%;
+    /* Initial state: start 20px further right (off-screen), maintain rotation */
+    transform: translateY(-50%) rotate(45deg) translateX(20px); 
+    width: 10px;
+    height: 10px;
+    background-color: var(--space-black);
+    /* --- CHANGED: Border to make it point RIGHT (towards the icon) --- */
+    border-right: 1px solid var(--spice-gold);
+    border-bottom: 1px solid var(--spice-gold);
+    border-top: none; 
+    border-left: none; 
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+    z-index: 998; 
+}
+
+.navbar-right li:hover::after {
+    opacity: 1;
+    visibility: visible;
+    /* Final state: slides into view */
+    transform: translateY(-50%) translateX(0); 
+}
+
+.navbar-right li:hover::before {
+    opacity: 1;
+    visibility: visible;
+    /* Final state: slides into view, maintains 45deg rotation */
+    transform: translateY(-50%) rotate(45deg) translateX(0); 
+}
+
+/* Advanced JS: Ripple Effect */
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5); 
+    animation: ripple-animation 0.6s linear forwards;
+    pointer-events: none; 
+    transform: scale(0); 
+    z-index: 1; 
+}
+
+@keyframes ripple-animation {
+    to {
+        transform: scale(4); 
+        opacity: 0; 
+    }
+}
+
+/* --- Hamburger Menu (Desktop: Hidden) --- */
+.hamburger-menu {
+    display: none; /* Hidden by default on desktop */
+}
+
+
+/* --- Mobile Optimizations (Media Queries) --- */
+@media (max-width: 768px) { 
+    body {
+        padding-right: 0; /* Remove right padding for mobile */
+        padding-bottom: 0; 
+        align-items: flex-start; /* Align content to top for mobile scrolling */
+        overflow-y: auto; 
+        overflow-x: hidden; /* Prevent horizontal scrollbar from hidden navbar */
+    }
+
+    .content {
+        max-width: 90%; 
+        padding: 20px 15px; 
+        margin-top: 50px; /* Push content down slightly to clear hamburger button */
+        margin-bottom: 20px; 
+    }
+
+    .content h1 {
+        font-size: clamp(2em, 8vw, 3.5em); 
+    }
+
+    .content p {
+        font-size: clamp(0.85em, 3.5vw, 1em); 
+    }
+
+    /* --- Hamburger Menu (Mobile: Visible & Styled) --- */
+    .hamburger-menu {
+        display: flex; /* Show hamburger on mobile */
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        width: 45px; /* Size of the button */
+        height: 45px;
+        background-color: var(--space-black);
+        border: 2px solid var(--spice-gold);
+        border-radius: 8px;
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 1100; /* Above navbar */
+        cursor: pointer;
+        padding: 8px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+        transition: var(--transition-smooth); /* For button hover/active effects */
+    }
+
+    .hamburger-menu:hover {
+        border-color: var(--spice-orange);
+        box-shadow: 0 0 20px var(--glow-amber);
+    }
+
+    .hamburger-menu .bar {
+        display: block;
+        width: 80%; /* Width of the bars */
+        height: 3px; /* Thickness of the bars */
+        background-color: var(--desert-sand);
+        border-radius: 2px;
+        transition: all 0.3s ease;
+    }
+
+    /* Hamburger Animation to X */
+    .hamburger-menu.is-active .bar:nth-child(1) {
+        transform: translateY(10px) rotate(45deg); 
+    }
+    .hamburger-menu.is-active .bar:nth-child(2) {
+        opacity: 0; 
+    }
+    .hamburger-menu.is-active .bar:nth-child(3) {
+        transform: translateY(-10px) rotate(-45deg); 
+    }
+
+
+    /* Navbar positioning and layout for mobile (Slide-in from Right, vertically centered) */
+    .navbar-right {
+        right: 0;
+        top: 50%; /* Vertically centered */
+        transform: translateY(-50%) translateX(100%); /* Hidden off-screen to the right, maintains centering */
+        width: 80px; /* More compact fixed width for the mobile sidebar */
+        border-radius: 15px 0 0 15px; /* Rounded left corners, sharp right */
+        padding: 10px 0; /* Reduced vertical padding */
+        flex-direction: column; /* Vertical alignment (like desktop) */
+        justify-content: center; /* Center items within the available height */
+        align-items: center; /* Center items horizontally within the sidebar */
+        box-shadow: -5px 0 20px rgba(0, 0, 0, 0.9); /* Shadow on the left edge */
+        visibility: hidden; /* Hide to prevent interaction when off-screen */
+        z-index: 1050; /* Above content, below hamburger */
+        overflow-y: auto; /* Allow scrolling if too many nav items for screen height */
+        max-height: 90vh; /* Prevents it from being taller than the viewport */
+    }
+
+    /* Navbar 'Open' State */
+    .navbar-right.nav-open {
+        transform: translateY(-50%) translateX(0); /* Slide into visible position, maintains centering */
+        visibility: visible; /* Make visible when open */
+    }
+
+    .navbar-right ul {
+        flex-direction: column; /* Vertical alignment */
+        gap: 15px; /* Spacing between items */
+        width: auto; /* Let items define width, not force full width */
+    }
+
+    /* Individual navbar items for mobile (more compact) */
+    .navbar-right li {
+        width: 55px; /* More compact button size */
+        height: 55px; /* More compact button size */
+        border-radius: 10px; /* Slightly more compact border-radius */
+        border: 2px solid var(--spice-gold); 
+        box-shadow: inset 0 0 4px rgba(255, 255, 255, 0.05); /* Lighter inner shadow */
+    }
+
+    .navbar-right li svg {
+        width: 28px; /* More compact icon size */
+        height: 28px;
+        filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.3)); 
+    }
+
+    /* Disable tooltips on mobile */
+    .navbar-right li::after,
+    .navbar-right li::before {
+        display: none; 
+    }
+
+    /* Adjust hover/active scale for mobile buttons */
+    .navbar-right li:hover,
+    .navbar-right li.active {
+        transform: scale(1.1); /* Good pop effect for smaller buttons */
+    }
+}
+
+/* Optional: Additional breakpoint for very small phones if needed */
+@media (max-width: 480px) {
+    .hamburger-menu {
+        width: 40px;
+        height: 40px;
+        top: 15px;
+        right: 15px;
+    }
+    .hamburger-menu .bar {
+        height: 2.5px;
+    }
+    .hamburger-menu.is-active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .hamburger-menu.is-active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .navbar-right {
+        width: 70px; /* Even narrower sidebar for very small screens */
+    }
+    .navbar-right li {
+        width: 50px; /* Even smaller button size for very narrow screens */
+        height: 50px;
+    }
+    .navbar-right li svg {
+        width: 25px;
+        height: 25px;
+    }
+}

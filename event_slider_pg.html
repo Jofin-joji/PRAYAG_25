@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Event | Prayag 25</title>
+    <link rel="icon" type="image/png" href="images/dune1.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- SwiperJS CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="static/style/event_slider.css">
+    <link rel="stylesheet" href="static/style/styles.css">
+</head>
+<body>
+    <!-- Hamburger Menu Button (for Mobile) -->
+    <button class="hamburger-menu" aria-label="Toggle navigation">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </button>
+    
+    <!-- Part 0: Preloader -->
+    <div id="preloader">
+        <div class="preloader-pattern"></div>
+    </div>
+
+    <!-- Custom Spice Cursor -->
+    <div class="custom-cursor"></div>
+
+    <!-- Part 3: Multi-Layered Parallax Background -->
+    <div class="parallax-bg">
+        <div id="stars-bg"></div>
+        <div id="particles-js"></div>
+    </div>
+
+
+    <div id="main-content">
+
+        <!-- Part 2: Events Section (with links to individual HTML pages) -->
+        <section id="events" class="content-section">
+            <h2 class="section-title">The Events</h2>
+            
+            <div class="swiper event-slider">
+                <div class="swiper-wrapper">
+                    
+                    <!-- Links to idea-pitch.html -->
+                    <a href="idea-pitch.html" class="swiper-slide">
+                        <div class="event-poster" style="background-image: url('event_images/event_3.jpg');">
+                            <div class="poster-glow"></div>
+                            <div class="poster-title">Idea Pitch</div>
+                        </div>
+                    </a>
+        
+                    <!-- Links to code-conquest.html -->
+                    <a href="code-conquest.html" class="swiper-slide">
+                        <div class="event-poster" style="background-image: url('event_images/event_5.jpg');">
+                            <div class="poster-glow"></div>
+                            <div class="poster-title">Code Conquest</div>
+                        </div>
+                    </a>
+        
+                    <!-- Links to cryptic-codex.html -->
+                    <a href="cryptic-codex.html" class="swiper-slide">
+                        <div class="event-poster" style="background-image: url('event_images/event_1.jpg');">
+                            <div class="poster-glow"></div>
+                            <div class="poster-title">Cryptic Codex</div>
+                        </div>
+                    </a>
+        
+                    <!-- Links to virtual-victory.html -->
+                    <a href="virtual-victory.html" class="swiper-slide">
+                        <div class="event-poster" style="background-image: url('event_images/event_2.jpg');">
+                            <div class="poster-glow"></div>
+                            <div class="poster-title">Virtual Victory</div>
+                        </div>
+                    </a>
+        
+                    <!-- Links to da-vinci.html -->
+                    <a href="da-vinci.html" class="swiper-slide">
+                        <div class="event-poster" style="background-image: url('event_images/event_4.jpg');">
+                            <div class="poster-glow"></div>
+                            <div class="poster-title">Da Vinci</div>
+                        </div>
+                    </a>
+                </div>
+                
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
+        
+                <!-- Add Navigation -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </section>
+    </div>
+    <!-- Navigation Bar -->
+    <nav class="navbar-right">
+        <ul>
+            <!-- Home Icon -->
+            <li class="nav-item" data-tooltip="Home">
+                <a href="landing_pg.html">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 5.69L17 10.19V18H15V12H9V18H7V10.19L12 5.69ZM12 3L2 12H5V20H11V14H13V20H19V12H22L12 3Z"/>
+                    </svg>
+                </a>
+            </li>
+            <!-- Events Icon (Building/Museum icon, labeled Events) -->
+            <li class="nav-item active" data-tooltip="Events">
+                <a href="event_slider_pg.html">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M2 20h20v-2H2v2zm2-4h16V7H4v9zm2-7h3v2H6V9zm4 0h3v2h-3V9zm4 0h3v2h-3V9zm-8 4h12v-6H6v6z"/>
+                    </svg>
+                </a>
+            </li>
+            
+            
+            <!-- Calendar Icon -->
+            <li class="nav-item" data-tooltip="Event Schedule">
+                <a href="schedule_pg.html">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M19 4h-2V2h-2v2H9V2H7v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11zM7 11h2v2H7v-2zm4 0h2v2h-2v-2zm4 0h2v2h-2v-2zm-8 4h2v2H7v-2zm4 0h2v2h-2v-2zm4 0h2v2h-2v-2z"/>
+                    </svg>
+                </a>
+            </li>
+            
+            <!-- Person Icon -->
+            <li class="nav-item" data-tooltip="Gallery">
+                <a href="gallery_pg.html">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M2 6v14c0 1.1.9 2 2 2h14v-2H4V6H2zm19-4H7c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 9l-2.5-3.21L14 12.5 11.5 9.5l-3 4H19v-4z"/>
+                    </svg>
+
+                </a>
+            </li>
+
+            <!-- Phone Icon -->
+            <li class="nav-item" data-tooltip="Contact">
+                <a href="contact_pg.html">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M20 15.5c-1.25 0-2.54-.23-3.7-.68-.45-.17-.9-.25-1.35-.25-.37 0-.72.08-1.05.25L12 16c-2.48-1.33-4.57-3.42-5.9-5.9L8.43 8.3c.17-.33.25-.68.25-1.05 0-.45-.08-.9-.25-1.35C7.23 4.54 7 3.25 7 2c0-.55-.45-1-1-1H3c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3c0-.55-.45-1-1-1z"/>
+                    </svg>
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    
+    <!-- Main Script File -->
+    <script src="static/script/event_slider.js"></script>
+    <script src="static/script/nav-script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,889 @@
+/* Dune-Inspired Variables */
+:root {
+    --spice-gold: #D4AF37;
+    --spice-orange: #FF8C00;
+    --desert-sand: #F4E4BC;
+    --deep-black: #0A0A0A;
+    --space-black: #000000;
+    --energy-blue: #4A9EFF;
+    --glow-amber: rgba(212, 175, 55, 0.6);
+    --glow-orange: rgba(255, 140, 0, 0.4);
+    
+    --font-heading: 'Orbitron', monospace;
+    --font-body: 'Inter', sans-serif;
+    
+    --transition-smooth: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: var(--font-body);
+    background: #000000 !important; /* Forcing black background */
+    color: var(--desert-sand);
+    overflow-x: hidden;
+    cursor: none;
+}
+
+/* Custom Cursor */
+.custom-cursor {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--spice-gold);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s, height 0.2s, background-color 0.2s;
+    z-index: 9999;
+    mix-blend-mode: difference;
+}
+
+/* Hide custom cursor on touch/mobile */
+@media (max-width: 768px) {
+    .custom-cursor {
+        display: none;
+    }
+}
+
+
+/* Parallax Background & Particles */
+.parallax-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+}
+#stars-bg {
+    width: 100%;
+    height: 100%;
+    background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
+    position: absolute;
+}
+
+
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.7));
+}
+
+/* Hero Section */
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    padding: 2rem;
+}
+
+.hero-content {
+    max-width: 1000px;
+    width: 100%;
+}
+
+.hero-title-container {
+    margin-bottom: 3rem;
+}
+
+.hero-title {
+    font-family: var(--font-heading);
+    font-size: clamp(3rem, 8vw, 8rem);
+    font-weight: 900;
+    line-height: 0.9;
+    margin-bottom: 1rem;
+    perspective: 1000px;
+}
+
+.title-word {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--spice-gold), var(--spice-orange));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: titleReveal 1s ease-out forwards;
+    opacity: 0;
+    transform: translateY(100px) rotateX(90deg);
+}
+
+@keyframes titleReveal {
+    to {
+        opacity: 1;
+        transform: translateY(0) rotateX(0deg);
+    }
+}
+
+.hero-line {
+    width: 200px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--spice-gold), var(--spice-orange), transparent);
+    margin: 2rem auto;
+    animation: lineExpand 2s ease-out 1s forwards;
+    transform: scaleX(0);
+}
+
+@keyframes lineExpand {
+    to { transform: scaleX(1); }
+}
+
+.hero-subtitle {
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    font-weight: 300;
+    letter-spacing: 4px;
+    color: var(--desert-sand);
+    opacity: 0;
+    animation: fadeInUp 1s ease-out 1.5s forwards;
+}
+
+.hero-details {
+    margin: 3rem 0;
+    opacity: 0;
+    animation: fadeInUp 1s ease-out 2s forwards;
+}
+
+.institution {
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    font-weight: 600;
+    color: var(--spice-gold);
+    margin-bottom: 0.5rem;
+}
+
+.location {
+    font-size: clamp(0.7rem, 0.9rem, 1.1rem);
+    color: var(--desert-sand);
+    letter-spacing: 2px;
+}
+
+.separator {
+    color: var(--spice-orange);
+    margin: 0 1rem;
+}
+
+.hero-cta {
+    opacity: 0;
+    animation: fadeInUp 1s ease-out 2.5s forwards;
+}
+
+.cta-button {
+    position: relative;
+    padding: 1rem 3rem;
+    background: transparent;
+    border: 2px solid var(--spice-gold);
+    color: var(--spice-gold);
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: var(--transition-smooth);
+    text-decoration: none;
+    display: inline-block;
+}
+
+.cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--spice-gold), var(--spice-orange));
+    transition: left 0.5s ease;
+    z-index: -1;
+}
+
+.cta-button:hover {
+    color: var(--space-black);
+    box-shadow: 0 0 30px var(--glow-amber);
+    transform: translateY(-3px);
+}
+
+.cta-button:hover::before {
+    left: 0;
+}
+
+.button-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: radial-gradient(circle, var(--glow-amber), transparent);
+    transform: translate(-50%, -50%);
+    transition: var(--transition-smooth);
+    z-index: -2;
+}
+
+.cta-button:hover .button-glow {
+    width: 200px;
+    height: 200px;
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    animation: scrollBounce 2s ease-in-out infinite;
+}
+
+.scroll-arrow {
+    width: 2px;
+    height: 30px;
+    background: var(--spice-gold);
+    margin: 0 auto 10px;
+    position: relative;
+}
+
+.scroll-arrow::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 8px solid var(--spice-gold);
+}
+
+.scroll-text {
+    font-size: 0.8rem;
+    color: var(--desert-sand);
+    letter-spacing: 1px;
+}
+
+@keyframes scrollBounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(10px); }
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Section Styles */
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--spice-gold), var(--spice-orange));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.section-line {
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--spice-gold), var(--spice-orange));
+    margin: 2rem auto;
+    animation: sectionLineGrow 1s ease-out;
+}
+
+@keyframes sectionLineGrow {
+    from { width: 0; }
+    to { width: 100px; }
+}
+
+.section-subtitle {
+    font-size: 1.2rem;
+    color: var(--desert-sand);
+    max-width: 600px;
+    margin: 0 auto;
+    opacity: 0.8;
+}
+
+
+
+/* About Section */
+.about-section {
+    padding: 6rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.about-content {
+    margin-top: 4rem;
+}
+
+.prophecy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+    margin-bottom: 4rem;
+}
+
+.prophecy-item {
+    text-align: center;
+    padding: 2rem;
+    background: rgba(20, 20, 20, 0.5);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 15px;
+    transition: var(--transition-smooth);
+    backdrop-filter: blur(10px);
+}
+
+.prophecy-item:hover {
+    transform: translateY(-10px);
+    border-color: var(--spice-gold);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.prophecy-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    filter: grayscale(100%);
+    transition: filter 0.3s ease;
+}
+
+.prophecy-item:hover .prophecy-icon {
+    filter: grayscale(0%);
+}
+
+.prophecy-item h3 {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    color: var(--spice-gold);
+    margin-bottom: 1rem;
+}
+
+.prophecy-item p {
+    color: var(--desert-sand);
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+.prophecy-text {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.prophecy-text p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--desert-sand);
+    opacity: 0.9;
+}
+
+
+
+/* Footer */
+.footer {
+    padding: 2rem;
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
+    text-align: center;
+}
+
+.footer-content p {
+    color: var(--desert-sand);
+    opacity: 0.7;
+    font-size: 0.9rem;
+}
+
+/* Animations on Scroll */
+[data-aos] {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease;
+}
+
+[data-aos].aos-animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+
+    .hero-section {
+        padding: 1rem;
+    }
+    
+    .events-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .prophecy-grid,
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .section-header {
+        margin-bottom: 2rem;
+    }
+    
+    .events-section,
+    .about-section,
+    .contact-section {
+        padding: 4rem 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-content {
+        padding: 1rem;
+    }
+    
+    .hero-title {
+        font-size: 3rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .events-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .event-card {
+        margin: 0 1rem;
+    }
+    .location {
+        font-size: clamp(0.7rem, 0.8rem, 1.1rem);
+    }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--space-black);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, var(--spice-gold), var(--spice-orange));
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, var(--spice-orange), var(--spice-gold));
+}
+
+/* Selection */
+::selection {
+    background: var(--glow-amber);
+    color: var(--space-black);
+}
+
+
+/* Navigation menu */
+
+/* Main Content Styling */
+.content {
+    text-align: center;
+    padding: 20px;
+    max-width: 800px;
+    position: relative; 
+    z-index: 1;
+}
+
+.content h1 {
+    font-family: var(--font-heading);
+    font-size: clamp(2.5em, 6vw, 4.5em); 
+    color: var(--spice-gold);
+    text-shadow: 0 0 20px var(--glow-amber), 0 0 30px var(--glow-orange); 
+    margin-bottom: 20px;
+}
+
+.content p {
+    font-size: clamp(0.9em, 2vw, 1.1em);
+    line-height: 1.8;
+    margin: 0 auto 15px;
+    color: var(--desert-sand);
+}
+
+/* Navbar Container Styling (Desktop) */
+.navbar-right {
+    position: absolute;
+    right: 80px; 
+    top: 50%; 
+    transform: translateY(-50%); 
+    display: flex;
+    flex-direction: column; /* Vertical alignment for desktop */
+    background: var(--space-black); 
+    border-radius: 20px; 
+    padding: 15px 0; 
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.9); 
+    z-index: 1000; 
+    transition: var(--transition-smooth); /* Added for smoother mobile transition */
+}
+
+.navbar-right ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column; /* Vertical alignment for desktop */
+    gap: 20px; 
+}
+
+/* Individual Navbar Item Styling (Desktop & Mobile Base) */
+.navbar-right li {
+    position: relative; 
+    width: 80px; 
+    height: 80px; 
+    border-radius: 15px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    
+    background-color: var(--deep-black);
+    border: 3px solid var(--spice-gold); 
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.08); 
+}
+
+.navbar-right li a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: white; 
+
+}
+
+.navbar-right li svg {
+    width: 40px; 
+    height: 40px;
+    fill: white; 
+    transition: fill var(--transition-smooth); 
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5)); 
+}
+
+
+/* Hover & Active States for Navbar Items */
+.navbar-right li:hover,
+.navbar-right li.active {
+    border: none; 
+    background: linear-gradient(to bottom right, #FFA500, #FFD700, #FF8C00); 
+    box-shadow: 0 0 25px var(--glow-amber), 
+                0 0 50px var(--glow-orange); 
+    transform: scale(1.12); 
+}
+
+/* Tooltip (Description on Hover - Desktop Only) */
+.navbar-right li::after {
+    content: attr(data-tooltip); 
+    position: absolute;
+    /* --- CHANGED: Position tooltip to the LEFT --- */
+    right: calc(100% + 20px); /* 20px to the left of the icon */
+    top: 50%;
+    /* Initial state: start 20px further right (off-screen) */
+    transform: translateY(-50%) translateX(20px); 
+    opacity: 0;
+    visibility: hidden;
+    background-color: var(--space-black);
+    color: var(--desert-sand);
+    padding: 10px 15px;
+    border-radius: 8px;
+    white-space: nowrap; 
+    font-size: 0.9em;
+    font-family: var(--font-body);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5), inset 0 0 5px rgba(255, 255, 255, 0.1);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+    z-index: 999; 
+    border: 1px solid var(--spice-gold); 
+}
+
+/* Tooltip Arrow (Desktop Only) */
+.navbar-right li::before {
+    content: '';
+    position: absolute;
+    /* --- CHANGED: Position arrow to the LEFT of the icon --- */
+    right: calc(100% + 15px); /* 15px to the left of the icon, between icon and tooltip */
+    top: 50%;
+    /* Initial state: start 20px further right (off-screen), maintain rotation */
+    transform: translateY(-50%) rotate(45deg) translateX(20px); 
+    width: 10px;
+    height: 10px;
+    background-color: var(--space-black);
+    /* --- CHANGED: Border to make it point RIGHT (towards the icon) --- */
+    border-right: 1px solid var(--spice-gold);
+    border-bottom: 1px solid var(--spice-gold);
+    border-top: none; 
+    border-left: none; 
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+    z-index: 998; 
+}
+
+.navbar-right li:hover::after {
+    opacity: 1;
+    visibility: visible;
+    /* Final state: slides into view */
+    transform: translateY(-50%) translateX(0); 
+}
+
+.navbar-right li:hover::before {
+    opacity: 1;
+    visibility: visible;
+    /* Final state: slides into view, maintains 45deg rotation */
+    transform: translateY(-50%) rotate(45deg) translateX(0); 
+}
+
+/* Advanced JS: Ripple Effect */
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5); 
+    animation: ripple-animation 0.6s linear forwards;
+    pointer-events: none; 
+    transform: scale(0); 
+    z-index: 1; 
+}
+
+@keyframes ripple-animation {
+    to {
+        transform: scale(4); 
+        opacity: 0; 
+    }
+}
+
+/* --- Hamburger Menu (Desktop: Hidden) --- */
+.hamburger-menu {
+    display: none; /* Hidden by default on desktop */
+}
+
+
+/* --- Mobile Optimizations (Media Queries) --- */
+@media (max-width: 768px) { 
+    body {
+        padding-right: 0; /* Remove right padding for mobile */
+        padding-bottom: 0; 
+        align-items: flex-start; /* Align content to top for mobile scrolling */
+        overflow-y: auto; 
+        overflow-x: hidden; /* Prevent horizontal scrollbar from hidden navbar */
+    }
+
+    .content {
+        max-width: 90%; 
+        padding: 20px 15px; 
+        margin-top: 50px; /* Push content down slightly to clear hamburger button */
+        margin-bottom: 20px; 
+    }
+
+    .content h1 {
+        font-size: clamp(2em, 8vw, 3.5em); 
+    }
+
+    .content p {
+        font-size: clamp(0.85em, 3.5vw, 1em); 
+    }
+
+    /* --- Hamburger Menu (Mobile: Visible & Styled) --- */
+    .hamburger-menu {
+        display: flex; /* Show hamburger on mobile */
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        width: 45px; /* Size of the button */
+        height: 45px;
+        background-color: var(--space-black);
+        border: 2px solid var(--spice-gold);
+        border-radius: 8px;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        z-index: 1100; /* Above navbar */
+        cursor: pointer;
+        padding: 8px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+        transition: var(--transition-smooth); /* For button hover/active effects */
+    }
+
+    .hamburger-menu:hover {
+        border-color: var(--spice-orange);
+        box-shadow: 0 0 20px var(--glow-amber);
+    }
+
+    .hamburger-menu .bar {
+        display: block;
+        width: 80%; /* Width of the bars */
+        height: 3px; /* Thickness of the bars */
+        background-color: var(--desert-sand);
+        border-radius: 2px;
+        transition: all 0.3s ease;
+    }
+
+    /* Hamburger Animation to X */
+    .hamburger-menu.is-active .bar:nth-child(1) {
+        transform: translateY(10px) rotate(45deg); 
+    }
+    .hamburger-menu.is-active .bar:nth-child(2) {
+        opacity: 0; 
+    }
+    .hamburger-menu.is-active .bar:nth-child(3) {
+        transform: translateY(-10px) rotate(-45deg); 
+    }
+
+
+    /* Navbar positioning and layout for mobile (Slide-in from Right, vertically centered) */
+    .navbar-right {
+        right: 0;
+        top: 50%; /* Vertically centered */
+        transform: translateY(-50%) translateX(100%); /* Hidden off-screen to the right, maintains centering */
+        width: 80px; /* More compact fixed width for the mobile sidebar */
+        border-radius: 15px 0 0 15px; /* Rounded left corners, sharp right */
+        padding: 10px 0; /* Reduced vertical padding */
+        flex-direction: column; /* Vertical alignment (like desktop) */
+        justify-content: center; /* Center items within the available height */
+        align-items: center; /* Center items horizontally within the sidebar */
+        box-shadow: -5px 0 20px rgba(0, 0, 0, 0.9); /* Shadow on the left edge */
+        visibility: hidden; /* Hide to prevent interaction when off-screen */
+        z-index: 1050; /* Above content, below hamburger */
+        overflow-y: auto; /* Allow scrolling if too many nav items for screen height */
+        max-height: 90vh; /* Prevents it from being taller than the viewport */
+    }
+
+    /* Navbar 'Open' State */
+    .navbar-right.nav-open {
+        transform: translateY(-50%) translateX(0); /* Slide into visible position, maintains centering */
+        visibility: visible; /* Make visible when open */
+    }
+
+    .navbar-right ul {
+        flex-direction: column; /* Vertical alignment */
+        gap: 15px; /* Spacing between items */
+        width: auto; /* Let items define width, not force full width */
+    }
+
+    /* Individual navbar items for mobile (more compact) */
+    .navbar-right li {
+        width: 55px; /* More compact button size */
+        height: 55px; /* More compact button size */
+        border-radius: 10px; /* Slightly more compact border-radius */
+        border: 2px solid var(--spice-gold); 
+        box-shadow: inset 0 0 4px rgba(255, 255, 255, 0.05); /* Lighter inner shadow */
+    }
+
+    .navbar-right li svg {
+        width: 28px; /* More compact icon size */
+        height: 28px;
+        filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.3)); 
+    }
+
+    /* Disable tooltips on mobile */
+    .navbar-right li::after,
+    .navbar-right li::before {
+        display: none; 
+    }
+
+    /* Adjust hover/active scale for mobile buttons */
+    .navbar-right li:hover,
+    .navbar-right li.active {
+        transform: scale(1.1); /* Good pop effect for smaller buttons */
+    }
+}
+
+/* Optional: Additional breakpoint for very small phones if needed */
+@media (max-width: 480px) {
+    .hamburger-menu {
+        width: 40px;
+        height: 40px;
+        top: 15px;
+        right: 15px;
+    }
+    .hamburger-menu .bar {
+        height: 2.5px;
+    }
+    .hamburger-menu.is-active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .hamburger-menu.is-active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .navbar-right {
+        width: 70px; /* Even narrower sidebar for very small screens */
+    }
+    .navbar-right li {
+        width: 50px; /* Even smaller button size for very narrow screens */
+        height: 50px;
+    }
+    .navbar-right li svg {
+        width: 25px;
+        height: 25px;
+    }
+}
+
+
+/* Rotating  logo*/
+#rotating-logo-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 800px; /* Desktop default */
+    height: 800px;
+    background-image: url('/images/PrayagLoop1.gif');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transform: translate(-50%, -50%);
+    filter: none;
+    opacity: 0.3;
+}
+
+/* Tablet screens */
+@media (max-width: 1024px) {
+    #rotating-logo-bg {
+        width: 600px;
+        height: 600px;
+    }
+}
+
+/* Mobile screens */
+@media (max-width: 600px) {
+    #rotating-logo-bg {
+        width: 600px;
+        height: 600px;
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 400px) {
+    #rotating-logo-bg {
+        width: 500px;
+        height: 500px;
+    }
+}
