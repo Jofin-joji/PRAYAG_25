@@ -53,9 +53,7 @@ body {
     align-items: center;
     cursor: pointer;
     transition: var(--transition-smooth);
-    /* Keep this commented out if you want tooltips visible outside the element,
-       but note it will affect the ripple effect. */
-    /* overflow: hidden; */ 
+   
     
     background-color: var(--deep-black);
     border: 3px solid var(--spice-gold); 
