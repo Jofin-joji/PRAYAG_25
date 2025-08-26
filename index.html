@@ -119,7 +119,7 @@
   <div id="loader">
     <div class="logo"></div>
     <p>Loading...<br>Open in laptop or PC for better experience</p>
-    <button id="enterBtn">Click To Enter</button>
+    <button id="enterBtn">System Initialized</button>
   </div>
 
   <!-- Intro Video -->
@@ -132,21 +132,29 @@
     const loader = document.getElementById("loader");
     const enterBtn = document.getElementById("enterBtn");
 
-    // Show button when video is ready
-    video.oncanplaythrough = () => {
-      enterBtn.style.display = "block";
-    };
+    // Detect iOS devices
+    const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
 
-    // Play video with sound when user clicks
-    enterBtn.addEventListener("click", () => {
-      loader.style.display = "none";
-      video.style.display = "block";
-      video.play();
-      video.onended = () => {
-        // Prevent back to loader
+    if (isIOS) {
+      // On iOS: skip button & video → redirect after loader animation
+      setTimeout(() => {
         window.location.replace("landing_pg.html");
+      }, 2000); // 3s for pulse animation
+    } else {
+      // Normal flow for other devices
+      video.oncanplaythrough = () => {
+        enterBtn.style.display = "block";
       };
-    });
+
+      enterBtn.addEventListener("click", () => {
+        loader.style.display = "none";
+        video.style.display = "block";
+        video.play();
+        video.onended = () => {
+          window.location.replace("landing_pg.html");
+        };
+      });
+    }
   </script>
 
 </body>

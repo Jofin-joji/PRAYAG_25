@@ -1,181 +1,241 @@
-// --- START OF FILE script.js ---
+// Add smooth interactions and animations
+document.addEventListener('DOMContentLoaded', function() {
 
-document.addEventListener('DOMContentLoaded', () => {
-    // --- Contact Card Animation on Scroll (for contacts.html) ---
-    const contactCards = document.querySelectorAll('.contact-card');
+    // Custom Cursor with Spice Trail
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+    if (isTouchDevice) return;
+
+    const cursor = document.createElement('div');
+    cursor.className = 'custom-cursor';
+    document.body.appendChild(cursor);
+
+    // Instant cursor movement
+    document.addEventListener('mousemove', (e) => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+    });
+
+    // Cursor interactions
+    const interactiveElements = document.querySelectorAll('a, button, .event-card');
+    interactiveElements.forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            cursor.style.transform = 'translate(-50%, -50%) scale(2)';
+            cursor.style.background = 'rgba(212, 175, 55, 0.3)';
+        });
+
+        el.addEventListener('mouseleave', () => {
+            cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+            cursor.style.background = 'transparent';
+        });
+    });
+    // Add click animations to contact buttons
+    const contactButtons = document.querySelectorAll('.contact-btn');
     
-    // THE FIX: Remove the check for "contacts.html".
-    // Now it will run on any page as long as contact cards are present.
-    if (contactCards.length > 0) {
-        // Add initial hidden class to all cards
-        contactCards.forEach(card => card.classList.add('card-hidden'));
-
-        const observerOptions = {
-            root: null, // viewport as root
-            rootMargin: '0px',
-            threshold: 0.1 // 10% of the item must be visible
-        };
-
-        const cardObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const card = entry.target;
-                    const index = Array.from(contactCards).indexOf(card);
-                    // Set a custom property for animation-delay
-                    card.style.setProperty('--animation-delay', `${index * 0.15}s`); // 0.15s delay between cards
-                    card.classList.remove('card-hidden');
-                    card.classList.add('card-visible');
-                    observer.unobserve(card); // Stop observing once animated
-                }
-            });
-        }, observerOptions);
-
-        contactCards.forEach(card => {
-            cardObserver.observe(card);
-        });
-    }
-
-
-    // --- Interactive Contact Card Logic ---
-    const cardsWrapper = document.querySelector('.contact-cards-wrapper');
-
-    if (cardsWrapper) {
-        cardsWrapper.addEventListener('click', (event) => {
-            const icon = event.target.closest('.phone-btn, .email-btn');
-            const backBtn = event.target.closest('.back-btn');
-
-            // If an icon was clicked
-            if (icon) {
-                event.preventDefault();
-                const card = icon.closest('.contact-card');
-                const infoText = card.querySelector('.info-text');
-                const info = icon.dataset.info;
-
-                if (card && infoText && info) {
-                    infoText.textContent = info;
-                    card.classList.add('info-mode-active');
-                }
-            }
-
-            // If the back button was clicked
-            if (backBtn) {
-                event.preventDefault();
-                const card = backBtn.closest('.contact-card');
-                if (card) {
-                    card.classList.remove('info-mode-active');
-                }
-            }
-        });
-    }
-
-    // --- Particle Background Animation (Sand-like Glittering) ---
-    const canvas = document.getElementById('particlesCanvas');
-    if (canvas) { // Only run particle animation if canvas exists on the page
-        const ctx = canvas.getContext('2d');
-        let particles = [];
-        let animationFrameId; // To store the requestAnimationFrame ID
-
-        // Function to set canvas size to fill the window
-        function setCanvasSize() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        setCanvasSize(); // Initial set
-
-        // Re-initialize particles and animation on window resize
-        window.addEventListener('resize', () => {
-            cancelAnimationFrame(animationFrameId); // Stop old animation loop
-            setCanvasSize();
-            initParticles(); // Re-initialize particles for new size
-            animateParticles(); // Start new animation loop
-        });
-
-        // Particle class definition
-        class Particle {
-            constructor(x, y, size, initialAlpha, driftSpeed, twinkleSpeed) {
-                this.x = x;
-                this.y = y;
-                this.size = size;
-                this.initialAlpha = initialAlpha; // Base opacity for the particle
-                this.currentAlpha = initialAlpha; // Current animated opacity
-                this.driftX = (Math.random() - 0.5) * driftSpeed; // Small random horizontal drift
-                this.driftY = (Math.random() - 0.5) * driftSpeed; // Small random vertical drift
-                this.twinkleSpeed = twinkleSpeed + (Math.random() * twinkleSpeed * 0.5); // Vary twinkle speed slightly per particle
-                this.twinkleOffset = Math.random() * Math.PI * 2; // Random phase for sine wave to de-synchronize twinkling
-
-                // Randomly pick between Dune's gold and orange for particle color (RGB values)
-                this.colorBase = Math.random() < 0.5 ? '212, 175, 55' : '255, 140, 0'; 
-            }
-
-            // Draw the particle as a circle
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
-                ctx.fillStyle = `rgba(${this.colorBase}, ${this.currentAlpha})`;
-                ctx.fill();
-            }
-
-            // Update particle position and alpha for glittering
-            update() {
-                // Update position with drift
-                this.x += this.driftX;
-                this.y += this.driftY;
-
-                // Wrap particles around the screen for an endless feel
-                if (this.x + this.size < 0) this.x = canvas.width + this.size;
-                if (this.x - this.size > canvas.width) this.x = -this.size;
-                if (this.y + this.size < 0) this.y = canvas.height + this.size;
-                if (this.y - this.size > canvas.height) this.y = -this.size;
-
-                // Update alpha for glittering effect using a sine wave
-                // This makes the particle's opacity oscillate between 50% and 100% of its initialAlpha
-                this.currentAlpha = this.initialAlpha * (0.5 + 0.5 * Math.sin(Date.now() * this.twinkleSpeed + this.twinkleOffset));
-                
-                this.draw();
-            }
-        }
-
-        // Initialize particles
-        function initParticles() {
-            particles = []; // Clear existing particles
-            let numberOfParticles;
-            const screenArea = canvas.width * canvas.height;
-
-            // Optimize particle count based on screen size
-            if (window.innerWidth <= 768) { // Mobile devices
-                numberOfParticles = screenArea / 8000; 
-            } else { // Desktop devices
-                numberOfParticles = screenArea / 300; 
-            }
+    contactButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            // Create ripple effect
+            const ripple = document.createElement('span');
+            const rect = this.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
             
-            // Clamp particle count.
-            numberOfParticles = Math.min(Math.max(numberOfParticles, 150), 1000); 
-
-            for (let i = 0; i < numberOfParticles; i++) {
-                let size = Math.random() * 3.0 + 1.0; // Particle size between 1.0 and 4.0 pixels
-                let x = Math.random() * canvas.width; // Random starting X position
-                let y = Math.random() * canvas.height; // Random starting Y position
-                let initialAlpha = Math.random() * 0.5 + 0.2; // Initial alpha between 0.2 and 0.7
-                // ADJUSTED: Increased driftSpeed for faster particle movement
-                let driftSpeed = 0.15; // Base speed for subtle drift (increased from 0.05)
-                let twinkleSpeed = 0.001; // Base speed for alpha oscillation (twinkling)
-
-                particles.push(new Particle(x, y, size, initialAlpha, driftSpeed, twinkleSpeed));
+            ripple.style.width = ripple.style.height = size + 'px';
+            ripple.style.left = x + 'px';
+            ripple.style.top = y + 'px';
+            ripple.classList.add('ripple');
+            
+            this.appendChild(ripple);
+            
+            // Remove ripple after animation
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+            
+            // Handle contact actions
+            if (this.classList.contains('email-btn')) {
+                const card = this.closest('.team-card');
+                const name = card.querySelector('.member-name').textContent;
+                handleEmailClick(name);
+            } else if (this.classList.contains('phone-btn')) {
+                const card = this.closest('.team-card');
+                const name = card.querySelector('.member-name').textContent;
+                handlePhoneClick(name);
             }
-        }
-
-        // Animation Loop
-        function animateParticles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas each frame
-
-            for (let i = 0; i < particles.length; i++) {
-                particles[i].update(); // Update and draw each particle
+        });
+    });
+    
+    // Add intersection observer for card animations
+    const cards = document.querySelectorAll('.team-card');
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const cardObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
             }
-            animationFrameId = requestAnimationFrame(animateParticles); // Request next frame
-        }
-
-        // Start the particle system
-        initParticles();
-        animateParticles();
-    }
+        });
+    }, observerOptions);
+    
+    // Initially hide cards and observe them
+    cards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+        cardObserver.observe(card);
+    });
+    
+    
+    // Add parallax effect to stars based on mouse movement
+    document.addEventListener('mousemove', (e) => {
+        const stars1 = document.querySelector('.stars');
+        const stars2 = document.querySelector('.stars2');
+        const stars3 = document.querySelector('.stars3');
+        
+        const x = e.clientX / window.innerWidth;
+        const y = e.clientY / window.innerHeight;
+        
+        if (stars1) stars1.style.transform = `translate(${x * 10}px, ${y * 10}px)`;
+        if (stars2) stars2.style.transform = `translate(${x * 15}px, ${y * 15}px)`;
+        if (stars3) stars3.style.transform = `translate(${x * 5}px, ${y * 5}px)`;
+    });
 });
+
+// Handle email contact
+function handleEmailClick(name) {
+    const emails = {
+        'ABINAND B ARJUN': 'abinandbarjun7@gmail.com',
+        'KRISHNAJA TN': 'krishnajatn20@gmail.com',
+        'ABHIJITH A K': '2002abihijithak@gmail.com'
+    };
+    
+    const email = emails[name] || 'info@prayag25.live';
+    
+    showNotification(`Opening email client for ${name}`, 'email');
+    
+    setTimeout(() => {
+        window.location.href = `mailto:${email}?subject=Contact from Prayag Tech Fest 2025`;
+    }, 1000);
+}
+
+// Handle phone contact
+function handlePhoneClick(name) {
+    const phones = {
+        'ABINAND B ARJUN': '+91 83010 66741',
+        'KRISHNAJA TN': '+91 80759 60827',
+        'ABHIJITH A K': '+91 85906 95431'
+    };
+    
+    const phone = phones[name] || '+91 94462 00253';
+    
+    showNotification(`Calling ${name} at ${phone}`, 'phone');
+    
+    setTimeout(() => {
+        window.location.href = `tel:${phone.replace(/\s/g, '')}`;
+    }, 1000);
+}
+
+
+// Notification system
+function showNotification(message, type) {
+    const notification = document.createElement('div');
+    notification.className = `notification ${type}`;
+    notification.innerHTML = `
+        <div class="notification-content">
+            <div class="notification-icon">
+                ${type === 'email' ? '📧' : '📞'}
+            </div>
+            <div class="notification-message">${message}</div>
+        </div>
+    `;
+    
+    // Add notification styles
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 15px 20px;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        z-index: 1000;
+        animation: slideIn 0.3s ease;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    `;
+    
+    document.body.appendChild(notification);
+    
+    // Remove notification after 3 seconds
+    setTimeout(() => {
+        notification.style.animation = 'slideOut 0.3s ease';
+        setTimeout(() => {
+            notification.remove();
+        }, 300);
+    }, 3000);
+}
+
+// Add CSS for ripple effect and animations
+const style = document.createElement('style');
+style.textContent = `
+    .ripple {
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        transform: scale(0);
+        animation: ripple-animation 0.6s linear;
+        pointer-events: none;
+    }
+    
+    @keyframes ripple-animation {
+        to {
+            transform: scale(2);
+            opacity: 0;
+        }
+    }
+    
+    @keyframes slideIn {
+        from {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+    
+    @keyframes slideOut {
+        from {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        to {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+    }
+    
+    .notification-content {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .notification-icon {
+        font-size: 1.2rem;
+    }
+    
+    .notification-message {
+        font-size: 0.9rem;
+        font-weight: 500;
+    }
+`;
+
+document.head.appendChild(style);

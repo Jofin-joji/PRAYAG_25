@@ -2,59 +2,68 @@ class DuneEventSchedule {
   constructor() {
     this.events = [
       {
-        time: "06:00",
-        title: "IDEA PITCH",
-        description: "Begin the day with mindfulness as the twin suns rise over the dunes of Arrakis.",
-        type: "all",
-        location: "location",
-        category: "all"
-      },
-      {
-        time: "08:30",
+        time: "09:30",
         title: "CODE CONQUEST",
-        description: "Master the deadly arts of desert warfare under the guidance of Stilgar.",
+        description: "A coding and debugging competition that challenge participants to solve real world problems.",
         type: "coding",
-        location: "location",
+        location: "AI LAB",
         category: "code"
       },
       {
         time: "10:00",
+        title: "VIRTUAL VICTORY",
+        description: "A competitive gaming event where participants showcase their gaming skills in a virtual battleground.",
+        type: "gaming",
+        location: "AI LAB",
+        category: "gaming"
+      },
+      {
+        time: "10:30",
+        title: "CRYPTIC CODEX",
+        description: "A thrilling treasure hunt that sharpens your mind and puts your problem-solving skills to the ultimate test.",
+        type: "gaming",
+        location: "Auditorium",
+        category: "gaming"
+      },
+      {
+        time: "11:00",
         title: "DA VINCI",
-        description: "Strategic planning for the next melange extraction operation in the deep desert.",
+        description: "An exciting design competition to unleash creativity and design thinking",
         type: "designing",
-        location: "location",
+        location: "DS Classroom",
         category: "designing"
       },
+
       {
-        time: "12:00",
-        title: "VIRTUAL VICTORY",
-        description: "Honor the sacred gift of water in the traditional Fremen ritual.",
-        type: "gaming",
-        location: "location",
-        category: "gaming"
-      },
-      {
-        time: "14:30",
-        title: "CRYPTIC CODEX",
-        description: "Learn the ancient art of riding the great makers through the endless sands.",
-        type: "gaming",
-        location: "location",
-        category: "gaming"
-      },
-      {
-        time: "16:00",
-        title: "FUN ZONE",
-        description: "Gather with the tribal leaders to discuss matters affecting all of Arrakis.",
-        type: "all",
-        location: "location",
+        time: "01:00 PM",
+        title: "n8n BootCamp",
+        description: "An AI Bootcamp introducing n8n, a powerful automation tool to build workflows with ease.",
+        type: "BootCamp",
+        location: "MCA LAB",
         category: "all"
       },
       {
-        time: "18:00",
+        time: "09:30",
+        title: "FUN ZONE",
+        description: "A hub of games and activities for fun and relaxation.",
+        type: "Games",
+        location: "DS Classroom",
+        category: "gaming"
+      },
+      {
+        time: "09:30",
         title: "PROJECT EXPO",
-        description: "Craft the sacred blade from the tooth of Shai-Hulud under master supervision.",
+        description: "A showcase of student's innovative projects and ideas.",
         type: "all",
-        location: "location",
+        location: "Central Courtyard",
+        category: "Exhibition"
+      },
+      {
+        time: "Day 2 - 09:30",
+        title: "IDEA PITCH",
+        description: "A contest for young innovators to display their groundbreaking ideas and solutions to real-world issues.",
+        type: "all",
+        location: "AI LABS",
         category: "all"
       },
     ];

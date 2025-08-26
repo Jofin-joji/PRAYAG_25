@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contacts | Prayag 25</title>
     <link rel="icon" type="image/png" href="images/dune1.png">
-    <!-- Google Fonts for Orbitron and Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
-    <!-- Link to external CSS file -->
     <link rel="stylesheet" href="static/style/contact_pg.css">
-    <link rel="stylesheet" href="static/style/nav_style.css">
+    <link rel="stylesheet" href="static/style/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Hamburger Menu Button (for Mobile) -->
@@ -18,90 +18,9 @@
         <span class="bar"></span>
         <span class="bar"></span>
     </button>
-
-    <!-- NEW: Canvas for particle background -->
-    <canvas id="particlesCanvas"></canvas>
-
-    <div class="contacts-page-container">
-        <h1 class="contacts-heading">CONTACTS</h1>
-        <div class="contact-cards-wrapper">
-            <!-- Card 1: ABHIJITH A K -->
-            <div class="contact-card">
-                <div class="contact-photo-container">
-                    <img src="coordinator_img/abhijith.png" alt="ABHIJITH A K">
-                </div>
-                <div class="contact-details">
-                    <!-- This is the default visible content -->
-                    <div class="contact-primary-info">
-                        <p class="contact-name">ABHIJITH A K</p>
-                        <p class="contact-title">Program Convenor</p>
-                        <div class="contact-icons">
-                            <a href="#" class="icon-btn phone-btn" aria-label="Show phone number" data-info="+91 85906 95431">
-                                <svg viewBox="0 0 24 24"><path d="M20 15.5c-1.25 0-2.54-.23-3.7-.68-.45-.17-.9-.25-1.35-.25-.37 0-.72.08-1.05.25L12 16c-2.48-1.33-4.57-3.42-5.9-5.9L8.43 8.3c.17-.33.25-.68.25-1.05 0-.45-.08-.9-.25-1.35C7.23 4.54 7 3.25 7 2c0-.55-.45-1-1-1H3c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3c0-.55-.45-1-1-1z"/></svg>
-                            </a>
-                            <a href="#" class="icon-btn email-btn" aria-label="Show email address" data-info="2002abihijithak@gmail.com">
-                                <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-                            </a>
-                        </div>
-                    </div>
-                    <!-- This is the hidden panel that will be shown on click -->
-                    <div class="contact-info-display">
-                        <p class="info-text"></p>
-                        <a href="#" class="back-btn">Back</a>
-                    </div>
-                </div>
-            </div>
-            <!-- Card 2: ABINAND B ARJUN -->
-            <div class="contact-card">
-                <div class="contact-photo-container">
-                    <img src="coordinator_img/abinand.png" alt="ABINAND B ARJUN">
-                </div>
-                <div class="contact-details">
-                    <div class="contact-primary-info">
-                        <p class="contact-name">ABINAND B ARJUN</p>
-                        <p class="contact-title">Program Convenor</p>
-                        <div class="contact-icons">
-                             <a href="#" class="icon-btn phone-btn" aria-label="Show phone number" data-info="+91 83010 66741">
-                                <svg viewBox="0 0 24 24"><path d="M20 15.5c-1.25 0-2.54-.23-3.7-.68-.45-.17-.9-.25-1.35-.25-.37 0-.72.08-1.05.25L12 16c-2.48-1.33-4.57-3.42-5.9-5.9L8.43 8.3c.17-.33.25-.68.25-1.05 0-.45-.08-.9-.25-1.35C7.23 4.54 7 3.25 7 2c0-.55-.45-1-1-1H3c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3c0-.55-.45-1-1-1z"/></svg>
-                            </a>
-                            <a href="#" class="icon-btn email-btn" aria-label="Show email address" data-info="abinandbarjun7@gmail.com">
-                                <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="contact-info-display">
-                        <p class="info-text"></p>
-                        <a href="#" class="back-btn">Back</a>
-                    </div>
-                </div>
-            </div>
-            <!-- Card 3: Abhishek P -->
-            <div class="contact-card">
-                <div class="contact-photo-container">
-                    <img src="coordinator_img/krishnaja.png" alt="Abhishek P">
-                </div>
-                <div class="contact-details">
-                     <div class="contact-primary-info">
-                        <p class="contact-name">KRISHNAJA</p>
-                        <p class="contact-title">Program Convenor</p>
-                        <div class="contact-icons">
-                             <a href="#" class="icon-btn phone-btn" aria-label="Show phone number" data-info="+91 80759 60827">
-                                <svg viewBox="0 0 24 24"><path d="M20 15.5c-1.25 0-2.54-.23-3.7-.68-.45-.17-.9-.25-1.35-.25-.37 0-.72.08-1.05.25L12 16c-2.48-1.33-4.57-3.42-5.9-5.9L8.43 8.3c.17-.33.25-.68.25-1.05 0-.45-.08-.9-.25-1.35C7.23 4.54 7 3.25 7 2c0-.55-.45-1-1-1H3c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3c0-.55-.45-1-1-1z"/></svg>
-                            </a>
-                            <a href="#" class="icon-btn email-btn" aria-label="Show email address" data-info="krishnajatn20@gmail.com">
-                                <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-                            </a>
-                        </div>
-                    </div>
-                     <div class="contact-info-display">
-                        <p class="info-text"></p>
-                        <a href="#" class="back-btn">Back</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
+    <div class="stars"></div>
+    <div class="stars2"></div>
+    <div class="stars3"></div>
 <!-- Navigation Bar -->
 <nav class="navbar-right">
     <ul>
@@ -153,9 +72,90 @@
         
     </ul>
 </nav>
+    
+    <div class="container">
 
-    <!-- Link to external JavaScript file -->
+        <header class="page-header">
+            <h1 class="page-title">CONTACTS</h1>
+            <p class="page-subtitle">Meet our amazing team</p>
+        </header>
+
+        <main class="team-grid">
+            <div class="team-card">
+                <div class="avatar-container">
+                    <img src="coordinator_img/1.jpg" alt="Abhisht Lak" class="avatar">
+                </div>
+                <h3 class="member-name">ABINAND B ARJUN</h3>
+                <p class="member-role">Student Coordinator</p>
+                <div class="contact-icons">
+                    <a class="contact-btn email-btn" href="mailto:abinandbarjun7@gmail.com?subject=Contact from Prayag Tech Fest 2025" aria-label="Email Abhisht">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                    <a class="contact-btn phone-btn" href="tel:+918301066741" aria-label="Call Abhisht">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M22 16.92V19.92C22 20.47 21.76 20.99 21.35 21.35C20.94 21.71 20.4 21.86 19.88 21.77C16.19 21.3 12.68 19.8 9.81 17.45C7.21 15.34 5.34 12.64 4.45 9.52C4 7.52 4 5.48 4.45 3.48C4.57 2.96 4.89 2.5 5.35 2.21C5.81 1.92 6.38 1.82 6.92 1.95L9.92 2.95C10.43 3.07 10.88 3.4 11.16 3.85C11.44 4.3 11.53 4.84 11.4 5.35L10.9 7.85C10.82 8.2 10.86 8.57 11 8.9C11.14 9.23 11.39 9.5 11.7 9.67L13.85 10.85C14.45 11.17 14.93 11.65 15.25 12.25L16.43 14.4C16.6 14.71 16.87 14.96 17.2 15.1C17.53 15.24 17.9 15.28 18.25 15.2L20.75 14.7C21.26 14.57 21.8 14.66 22.25 14.94C22.7 15.22 23.03 15.67 23.15 16.18L22 16.92Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="team-card">
+                <div class="avatar-container">
+                    <img src="coordinator_img/2.jpg" alt="Abinand B Arjun" class="avatar">
+                </div>
+                <h3 class="member-name">KRISHNAJA TN</h3>
+                <p class="member-role">Student Coordinator</p>
+                <div class="contact-icons">
+                    <a class="contact-btn email-btn" href="mailto:krishnajatn20@gmail.com?subject=Contact from Prayag Tech Fest 2025" aria-label="Email Abinand">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                    <a class="contact-btn phone-btn" href="tel:+918075960827" aria-label="Call Abinand">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M22 16.92V19.92C22 20.47 21.76 20.99 21.35 21.35C20.94 21.71 20.4 21.86 19.88 21.77C16.19 21.3 12.68 19.8 9.81 17.45C7.21 15.34 5.34 12.64 4.45 9.52C4 7.52 4 5.48 4.45 3.48C4.57 2.96 4.89 2.5 5.35 2.21C5.81 1.92 6.38 1.82 6.92 1.95L9.92 2.95C10.43 3.07 10.88 3.4 11.16 3.85C11.44 4.3 11.53 4.84 11.4 5.35L10.9 7.85C10.82 8.2 10.86 8.57 11 8.9C11.14 9.23 11.39 9.5 11.7 9.67L13.85 10.85C14.45 11.17 14.93 11.65 15.25 12.25L16.43 14.4C16.6 14.71 16.87 14.96 17.2 15.1C17.53 15.24 17.9 15.28 18.25 15.2L20.75 14.7C21.26 14.57 21.8 14.66 22.25 14.94C22.7 15.22 23.03 15.67 23.15 16.18L22 16.92Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="team-card">
+                <div class="avatar-container">
+                    <div class="avatar-placeholder">
+                        <img src="coordinator_img/3.jpg" alt="Abinand B Arjun" class="avatar">
+                    </div>
+                </div>
+                <h3 class="member-name">ABHIJITH A K</h3>
+                <p class="member-role">Student Coordinator</p>
+                <div class="contact-icons">
+                    <a class="contact-btn email-btn" href="mailto:2002abihijithak@gmail.com?subject=Contact from Prayag Tech Fest 2025" aria-label="Email Priya">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                    <a class="contact-btn phone-btn" href="tel:+918590695431" aria-label="Call Priya">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M22 16.92V19.92C22 20.47 21.76 20.99 21.35 21.35C20.94 21.71 20.4 21.86 19.88 21.77C16.19 21.3 12.68 19.8 9.81 17.45C7.21 15.34 5.34 12.64 4.45 9.52C4 7.52 4 5.48 4.45 3.48C4.57 2.96 4.89 2.5 5.35 2.21C5.81 1.92 6.38 1.82 6.92 1.95L9.92 2.95C10.43 3.07 10.88 3.4 11.16 3.85C11.44 4.3 11.53 4.84 11.4 5.35L10.9 7.85C10.82 8.2 10.86 8.57 11 8.9C11.14 9.23 11.39 9.5 11.7 9.67L13.85 10.85C14.45 11.17 14.93 11.65 15.25 12.25L16.43 14.4C16.6 14.71 16.87 14.96 17.2 15.1C17.53 15.24 17.9 15.28 18.25 15.2L20.75 14.7C21.26 14.57 21.8 14.66 22.25 14.94C22.7 15.22 23.03 15.67 23.15 16.18L22 16.92Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </main>
+
+
+        <footer class="page-footer">
+            <p class="footer-text">Get in touch with our amazing team</p>
+            <p class="footer-brand">@PRAYAG 2025</p>
+        </footer>
+    </div>
+
+
     <script src="static/script/contact_pg.js"></script>
-    <script src="static/script/nav-script.js"></script>
+    <script src="static/script/nav-script.js"></script> 
 </body>
 </html>

@@ -537,7 +537,7 @@ body {
     transform: translateY(-50%); 
     display: flex;
     flex-direction: column; /* Vertical alignment for desktop */
-    background: var(--space-black); 
+    background: #00000000; 
     border-radius: 20px; 
     padding: 15px 0; 
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.9); 
@@ -760,6 +760,7 @@ body {
 
     /* Navbar positioning and layout for mobile (Slide-in from Right, vertically centered) */
     .navbar-right {
+        position: fixed;
         right: 0;
         top: 50%; /* Vertically centered */
         transform: translateY(-50%) translateX(100%); /* Hidden off-screen to the right, maintains centering */
@@ -835,6 +836,7 @@ body {
     }
 
     .navbar-right {
+        position: fixed;
         width: 70px; /* Even narrower sidebar for very small screens */
     }
     .navbar-right li {
@@ -861,7 +863,7 @@ body {
     background-position: center;
     transform: translate(-50%, -50%);
     filter: none;
-    opacity: 0.3;
+    opacity: 1;
 }
 
 /* Tablet screens */
