@@ -721,3 +721,29 @@ video {
         display: none;
     }
 }
+
+/* --- ADDITIONS FOR BUTTONS --- */
+
+/* This group will stack the buttons and add space between them */
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* Adjust this value for more/less space */
+  width: 100%;
+}
+
+/* This styles the new download button to be distinct but still fit the theme */
+.download-btn {
+  border-color: #3b82f6; /* A cool blue to contrast with the gold register button */
+  color: #3b82f6;
+}
+
+.download-btn::before {
+  /* Use a different gradient for the hover effect */
+  background: linear-gradient(90deg, #3b82f6, #06b6d4);
+}
+
+.download-btn:hover {
+  color: var(--space-black); /* Text turns black on hover */
+  box-shadow: 0 0 30px rgba(6, 182, 212, 0.6); /* A matching cyan glow */
+}

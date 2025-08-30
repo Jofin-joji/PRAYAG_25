@@ -23,6 +23,7 @@ body {
   color: white;
   font-family: var(--font-heading);
   overflow-x: hidden;
+  overflow-y: hidden; /* This prevents vertical scrolling */
 }
 
 /* ================= PRELOADER ================= */
@@ -44,8 +45,15 @@ body {
 
 /* ================= CONTENT ================= */
 .content-section {
-  padding: 100px 5% 0 5%; /* Adjust top padding */
-  min-height: 80vh;
+  width: 100%;
+  height: 100vh; /* Make section take full viewport height */
+  padding: 0 5%;    /* Keep side padding, remove top/bottom */
+  
+  /* Flexbox properties for perfect centering */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center vertically */
+  align-items: center;     /* Center horizontally */
 }
 
 .section-title {
@@ -192,4 +200,40 @@ body {
   .swiper-pagination {
     transform: scale(0.8);
   }
+}
+
+/* ================= RULES BUTTON ================= */
+.rules-button {
+  /* Positioning */
+  display: block; /* Allows margin auto to work for centering */
+  width: -webkit-fit-content; /* For Safari/Chrome */
+  width: -moz-fit-content;    /* For Firefox */
+  width: fit-content;         /* Standard */
+  margin: 40px auto 0;      /* 40px top margin, auto left/right for centering */
+  padding: 12px 28px;
+  
+  /* Appearance */
+  border: 2px solid var(--spice-gold);
+  border-radius: 5px;
+  background-color: transparent;
+  color: var(--spice-gold);
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  text-decoration: none;
+  text-align: center;
+  
+  /* Effects */
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 0 15px rgba(255, 195, 0, 0.4);
+}
+
+.rules-button:hover,
+.rules-button:focus {
+  background-color: var(--spice-gold);
+  color: var(--space-black);
+  box-shadow: 0 0 25px var(--spice-gold-glow);
+  cursor: pointer;
+  transform: translateY(-2px); /* Slight lift on hover */
 }
