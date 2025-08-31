@@ -1,0 +1,173 @@
+/* Dune-Inspired Custom Properties */
+:root {
+  --space-black: #000000;
+  --spice-gold: #FFC300;
+  --spice-orange: #FF5733;
+  --dune-sand: #F0E68C;
+  --spice-gold-glow: rgba(255, 195, 0, 0.6);
+  --glass-bg: rgba(10, 10, 10, 0.5);
+  --border-glow: rgba(255, 195, 0, 0.3);
+}
+
+/* Reset and Base Styles */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Rajdhani', sans-serif;
+  background: var(--space-black);
+  color: var(--dune-sand);
+  overflow-x: hidden;
+  cursor: none;
+  min-height: 100vh;
+}
+
+/* Custom Cursor */
+.custom-cursor { display: none; } /* Disabled for simplicity, enable if needed */
+@media (pointer: fine) {
+  .custom-cursor { display: block; width: 20px; height: 20px; border: 2px solid var(--spice-gold); border-radius: 50%; position: fixed; pointer-events: none; transform: translate(-50%, -50%); transition: width 0.2s, height 0.2s; z-index: 9999; mix-blend-mode: difference; }
+}
+
+/* Background video */
+#video-background {
+  position: fixed; top: 50%; left: 50%; min-width: 100%; min-height: 100%; width: auto; height: auto;
+  z-index: -2; transform: translate(-50%, -50%); object-fit: cover; opacity: 0.5;
+}
+
+/* ======================================= */
+/* === DESKTOP-ONLY SIDE GALLERY STYLES === */
+/* ======================================= */
+.gallery-background { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; overflow: hidden; pointer-events: none; }
+.gallery-side { position: absolute; top: 0; height: 100%; width: 30vw; max-width: 400px; display: flex; gap: 1.5rem; -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%); mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%); }
+.gallery-side.left { left: 0; justify-content: flex-start; }
+.gallery-side.right { right: 0; justify-content: flex-end; }
+.gallery-column { display: flex; flex-direction: column; gap: 1.5rem; width: 100%; animation: scrollUp 40s linear infinite; }
+.gallery-column.reverse-scroll { animation: scrollDown 50s linear infinite; }
+.gallery-poster { width: 100%; border-radius: 12px; border: 2px solid var(--border-glow); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); }
+
+/* Main Content Container & Layout */
+.main-container { position: relative; z-index: 10; max-width: 1400px; margin: 0 auto; padding: 2rem; min-height: 100vh; display: flex; flex-direction: column; }
+.header { text-align: center; margin-bottom: 2rem; padding-top: 2rem; flex-shrink: 0; position: relative; }
+.header-line, .header-line-bottom { height: 2px; margin: 1rem auto; background: linear-gradient(90deg, transparent, var(--spice-gold), var(--spice-orange), transparent); }
+.header-line { width: 200px; }
+.header-line-bottom { width: 150px; }
+.main-title { font-family: 'Orbitron', monospace; font-size: clamp(3rem, 6vw, 6rem); font-weight: 900; text-shadow: 0 0 30px var(--spice-gold-glow); }
+.title-word { background: linear-gradient(135deg, var(--spice-gold), var(--spice-orange)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.content-area { flex-grow: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+
+/* Mission Briefing Section */
+.content-section { 
+  background: var(--glass-bg); 
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); 
+  border: 1px solid var(--border-glow); 
+  border-radius: 20px; 
+  padding: 2.5rem; 
+  max-width: 700px; 
+  width: 90%; 
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4); 
+  transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+.content-section:hover { transform: translateY(-5px); box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 40px var(--spice-gold-glow); }
+.section-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+.section-icon { width: 3rem; height: 3rem; background: linear-gradient(135deg, var(--spice-gold), var(--spice-orange)); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
+.section-title { font-family: 'Orbitron', monospace; font-size: clamp(1.5rem, 4vw, 2.2rem); font-weight: 700; background: linear-gradient(135deg, var(--spice-orange), #ff8a65); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.section-content { font-size: 1.1rem; line-height: 1.7; opacity: 0.9; }
+.section-content p:not(:last-child) { margin-bottom: 1rem; }
+
+/* Footer */
+.footer { margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255, 195, 0, 0.2); text-align: center; flex-shrink: 0; }
+.back-link { display: inline-flex; align-items: center; gap: 0.5rem; font-family: 'Orbitron', monospace; color: rgba(240, 230, 140, 0.8); text-decoration: none; transition: color 0.3s ease; font-size: 1rem; }
+.back-link:hover { color: var(--spice-gold); }
+.back-arrow { transition: transform 0.3s ease; }
+.back-link:hover .back-arrow { transform: translateX(-5px); }
+.footer-text { color: rgba(240, 230, 140, 0.6); font-size: 0.9rem; margin-top: 1rem; }
+
+/* Animations */
+@keyframes scrollUp { from { transform: translateY(0); } to { transform: translateY(-50%); } }
+@keyframes scrollDown { from { transform: translateY(-50%); } to { transform: translateY(0); } }
+
+/* ============================================= */
+/* === MOBILE-ONLY ANIMATED CARD STACK STYLES === */
+/* ============================================= */
+.mobile-card-stack {
+  display: none; /* Hidden on desktop */
+  position: relative;
+  width: 60vw;
+  max-width: 280px;
+  height: 80vw; 
+  max-height: 380px;
+  margin-bottom: 3rem; 
+}
+
+.stack-card {
+  position: absolute;
+  width: 100%; height: 100%;
+  border-radius: 15px;
+  border: 2px solid var(--border-glow);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  object-fit: cover;
+  opacity: 0;
+  transform: translateY(20px) scale(0.9) rotate(0deg);
+  /* Total animation time = 3s per card * 7 cards = 21s */
+  animation: cycleCards 21s linear infinite; 
+}
+
+/* Stagger the animation for each card (3s interval) */
+.stack-card:nth-child(1) { animation-delay: 0s; }
+.stack-card:nth-child(2) { animation-delay: 3s; }
+.stack-card:nth-child(3) { animation-delay: 6s; }
+.stack-card:nth-child(4) { animation-delay: 9s; }
+.stack-card:nth-child(5) { animation-delay: 12s; }
+.stack-card:nth-child(6) { animation-delay: 15s; }
+.stack-card:nth-child(7) { animation-delay: 18s; }
+
+
+@keyframes cycleCards {
+  0% { opacity: 0; transform: translateY(20px) scale(0.9) rotate(5deg); z-index: 1; }
+  10% { opacity: 1; transform: translateY(0) scale(1) rotate(0deg); z-index: 10; } /* Card arrives and comes to front */
+  20% { opacity: 1; transform: translateY(0) scale(1) rotate(0deg); z-index: 10; } 
+  30% { opacity: 0; transform: translateY(-30px) scale(1.1) rotate(-5deg); z-index: 1; } /* Card leaves */
+  100% { opacity: 0; z-index: 1; }
+}
+
+/* ============================================= */
+/* === MOBILE-ONLY BACK-LINK STYLES         === */
+/* ============================================= */
+.mobile-back-link { display: none; }
+
+/* ============================================= */
+/* === RESPONSIVE & MOBILE OPTIMIZATIONS === */
+/* ============================================= */
+@media (max-width: 900px) {
+    .gallery-side { width: 35vw; }
+}
+
+@media (max-width: 768px) {
+  /* 1. Disable Heavy Desktop Features */
+  #video-background { display: none; }
+  .gallery-background { display: none; }
+  
+  /* 2. Activate Mobile-Friendly Features */
+  body { background: radial-gradient(circle, #2d1b00 0%, var(--space-black) 70%); }
+  .mobile-card-stack { display: block; } /* Show animated cards */
+
+  /* 3. Activate Mobile Back Button in Header */
+  .mobile-back-link {
+    display: flex; align-items: center; justify-content: center;
+    position: absolute; top: 1.5rem; left: 1rem;
+    width: 44px; height: 44px; background: rgba(20, 20, 20, 0.4); backdrop-filter: blur(5px);
+    border: 1px solid var(--border-glow); border-radius: 50%; z-index: 100; color: var(--spice-gold);
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  .mobile-back-link:active { background-color: var(--spice-gold-glow); transform: scale(1.05); }
+  .mobile-back-link svg { width: 24px; height: 24px; }
+
+  /* 4. Optimize Layout */
+  .main-container { padding: 1rem; }
+  .header { margin-bottom: 2rem; padding-top: 1rem; }
+  .main-title { font-size: clamp(2.5rem, 12vw, 4rem); }
+  .content-section { padding: 1.5rem; width: 100%; }
+  .footer { padding-bottom: 1rem; }
+  
+  /* 5. RESTORE FOOTER LINK VISIBILITY */
+  .footer .back-link { display: inline-flex; } 
+}
