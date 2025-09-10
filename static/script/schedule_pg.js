@@ -35,7 +35,7 @@ class DuneEventSchedule {
       },
 
       {
-        time: "01:00 PM",
+        time: "1:00 PM",
         title: "n8n BootCamp",
         description: "An AI Bootcamp introducing n8n, a powerful automation tool to build workflows with ease.",
         type: "BootCamp",
@@ -59,7 +59,7 @@ class DuneEventSchedule {
         category: "Exhibition"
       },
       {
-        time: "Day 2 - 09:30",
+        time: "Day 2 - 10:00",
         title: "IDEA PITCH",
         description: "A contest for young innovators to display their groundbreaking ideas and solutions to real-world issues.",
         type: "all",
