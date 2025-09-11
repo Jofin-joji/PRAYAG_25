@@ -1,26 +1,30 @@
 document.addEventListener("DOMContentLoaded", () => {
     const track = document.querySelector(".sponsor-carousel-track");
-    const logos = track.querySelectorAll(".sponsor-logo-wrapper");
 
-    let speed = 0.5; // pixels per frame (adjust for speed)
+    // Clone the logos to create a seamless loop
+    const logos = Array.from(track.children);
+    logos.forEach(logo => {
+        const clone = logo.cloneNode(true);
+        track.appendChild(clone);
+    });
+
     let position = 0;
+    const speed = 0.5; // Adjust for speed
 
     function animate() {
         position -= speed;
-
-        // Check first logo width + margin
-        const firstLogo = track.firstElementChild;
-        const logoWidth = firstLogo.offsetWidth + 80; // 40px left + 40px right margin
-
-        if (-position >= logoWidth) {
-            // Move first logo to the end
-            track.appendChild(firstLogo);
-            position += logoWidth;
+        
+        // If the track has scrolled by half its width, reset the position
+        if (position <= -track.scrollWidth / 2) {
+            position = 0;
         }
 
         track.style.transform = `translateX(${position}px)`;
+        
+        // Continue the animation loop
         requestAnimationFrame(animate);
     }
 
+    // Start the animation
     animate();
 });
