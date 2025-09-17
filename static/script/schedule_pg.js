@@ -43,7 +43,7 @@ class DuneEventSchedule {
         category: "all"
       },
       {
-        time: "09:30 PM",
+        time: "09:30 AM",
         title: "FUN ZONE",
         description: "A hub of games and activities for fun and relaxation.",
         type: "Games",
