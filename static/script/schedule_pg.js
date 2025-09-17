@@ -39,27 +39,27 @@ class DuneEventSchedule {
         title: "n8n BootCamp",
         description: "An AI Bootcamp introducing n8n, a powerful automation tool to build workflows with ease.",
         type: "BootCamp",
-        location: "MCA LAB",
+        location: "AI LAB",
         category: "all"
       },
       {
-        time: "09:30",
+        time: "09:30 PM",
         title: "FUN ZONE",
         description: "A hub of games and activities for fun and relaxation.",
         type: "Games",
-        location: "DS Classroom",
+        location: "Mechanical Block-1st Floor",
         category: "gaming"
       },
       {
-        time: "09:30",
+        time: "09:30 AM",
         title: "PROJECT EXPO",
         description: "A showcase of student's innovative projects and ideas.",
         type: "all",
-        location: "Central Courtyard",
+        location: "Mechanical Block-2nd Floor",
         category: "Exhibition"
       },
       {
-        time: "Day 2 - 10:00",
+        time: "Day 2 - 10:00 AM ",
         title: "IDEA PITCH",
         description: "A contest for young innovators to display their groundbreaking ideas and solutions to real-world issues.",
         type: "all",
